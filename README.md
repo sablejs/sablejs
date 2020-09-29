@@ -4,4 +4,5 @@
 2. Mini Program/Game Dynamic JavaScript execution
 3. Protect JavaScript source code via compiling to opcode
 
-It should be the fastest interpreter written in JavaScript (compared to sval, js-interpreter, etc.), it will be coming soon...
+sablejs may be the fastest interpreter written in JavaScript (compared to sval, js-interpreter, etc.)
+It will be coming soon...
