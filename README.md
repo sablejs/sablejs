@@ -4,6 +4,8 @@
 2. Mini Program/Game Dynamic JavaScript execution
 3. Protect JavaScript source code via compiling to opcode
 
-sablejs may be the fastest interpreter written in JavaScript (compared to sval, js-interpreter, etc.)
+sablejs may be the fastest interpreter written in JavaScript:
+* 50% faster than sval
+* 300-400% faster than js-interpreter, eval5, engine262, etc.
 
 It will be coming soon...
