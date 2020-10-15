@@ -5,7 +5,7 @@
 3. Protect JavaScript source code via AOT compiling to opcode
 
 sablejs may be the fastest interpreter written in JavaScript:
-* 1.x faster than sval
-* 3~4.x faster than js-interpreter, eval5, engine262, etc.
+* 1.x faster than sval, eval5
+* 7.x ~ 8.x faster than js-interpreter, engine262, etc.
 
 It will be coming soon...
