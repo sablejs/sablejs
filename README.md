@@ -5,7 +5,7 @@
 3. Protect JavaScript source code via AOT compiling to opcode;
 
 sablejs may be the fastest interpreter written in JavaScript:
-* 1.x ~ 2.x slower than WebAssembly QuickJS;
+* 1.x ~ 2.x slower than QuickJS WebAssembly;
 * 1.x faster than sval, eval5;
 * 7.x ~ 8.x faster than js-interpreter, engine262, etc;
 
