@@ -12,7 +12,7 @@ sablejs may be the fastest interpreter written by JavaScript:
 and sablejs's file size is only ~50KB (with GZIP🥰).
 
 **Current progress:**
-1. Except for Object/JSON, other logic has been completed
-2. Test262 has been integrated, version 1.0 will be released after the pass rate is over 90%
+1. Except for JSON, other logic has been completed
+2. Test262 has been integrated, now covered ~15% cases
 
 It will be coming soon...
