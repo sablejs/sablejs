@@ -13,6 +13,6 @@ and sablejs's file size is only ~50KB (with GZIP🥰).
 
 **Current progress:**
 1. Except for JSON, other logic has been completed
-2. Test262 has been integrated, now covered ~15% cases
+2. Test262 has been integrated, now covered ~40% cases
 
 It will be coming soon...
