@@ -5,14 +5,14 @@
 3. Protect JavaScript source code via AOT compiling to opcode;
 
 sablejs may be the fastest interpreter written by JavaScript:
-* 2.x ~ 3.x slower than QuickJS WebAssembly;
-* More than 2 twice faster than sval, eval5;
-* More than 7 twice faster than js-interpreter, engine262, etc;
+* ~3.x slower than QuickJS WebAssembly;
+* More than 2.x faster than sval, eval5;
+* More than 7.x faster than js-interpreter, engine262, etc;
 
 and sablejs's file size is only ~50KB (with GZIP🥰).
 
 **Current progress:**
 1. Except for JSON, other logic has been completed
-2. Test262 has been integrated, now covered ~40% cases
+2. Test262 has been integrated, now covered ~60% cases
 
 It will be coming soon...
