@@ -6,7 +6,7 @@
 
 sablejs may be the fastest interpreter written by JavaScript ([using v8 benchmark suites](https://github.com/mozilla/arewefastyet/tree/master/benchmarks/v8-v7)):
 * ~3.x slower than QuickJS WebAssembly;
-* More than 3.x faster than sval, eval5;
+* More than 2.x faster than sval, eval5;
 * More than 8.x faster than js-interpreter, engine262, etc;
 
 > Benchmark enviorment: node.js v12.19.0 / 2.4 GHz Intel Core i9 / OSX 10.14.6
