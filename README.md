@@ -20,8 +20,8 @@ sablejs may be the fastest interpreter written by JavaScript ([using v8 benchmar
 | NavierStokes  | 104 | 33.6 | 43.1 | 622 | 109 |
 | Splay  | 268 | 319 | 190 | 1155 | 36.7 |
 | Total score  | 126 | 58.1 | 47.4 | 534 | 167 |
-
-and sablejs's file size is only ~50KB (with GZIP🥰).
+| File Size(KB)  | 210 | 152 | 134 | 434 | - |
+| Gzip Size(KB) | 54 | 40 | 34 | 245 | - |
 
 **Current progress:**
 1. Except for JSON, other logic has been completed
