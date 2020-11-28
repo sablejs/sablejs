@@ -8,18 +8,18 @@ sablejs may be the fastest interpreter written by JavaScript ([using v8 benchmar
 
 > Benchmark enviorment: node.js v14.14.0 / AMD Ryzen5 3600 3.6GHz / Windows10
 
-|     | sable.js  | sval  | eval5  | quickjs-wasm  | mujs  |
-|  ----  | ----  | ----  | ----  | ----  | ----  |
-| Language  | JavaScript | JavaScript | JavaScript | C + WebAssembly | C |
-| Richards  | 86.4 | 26.4 | 17.9 | 406 | 187 |
-| Crypto  | 70.5 | 25.7 | 17.5 | 476 | 113 |
-| RayTrace  | 232 | 88.6 | 70.5 | 462 | 392 |
-| NavierStokes  | 121 | 31.1 | 40.5 | 833 | 109 |
-| Splay  | 374 | 319 | 284 | 1265 | 36.7 |
-| Total score  | 145 | 54.2 | 43.0 | 623 | 167 |
-| Baseline  | 1 |  ▼ 1.67 | ▼ 2.37 | ▲ 3.29 | ▲ 0.15 |
-| File Size(KB)  | 210 | 152 | 134 | 434 | - |
-| Gzip Size(KB) | 54 | 40 | 34 | 245 | - |
+|     | sable.js  | sval  | eval5  | quickjs-wasm  | mujs  | otto
+|  ----  | ----  | ----  | ----  | ----  | ----  | ----  |
+| Language  | JavaScript | JavaScript | JavaScript | C + WebAssembly | C | Golang |
+| Richards  | 86.4 | 26.4 | 17.9 | 406 | 187 | 19.4 |
+| Crypto  | 70.5 | 25.7 | 17.5 | 476 | 113 | 15 |
+| RayTrace  | 232 | 88.6 | 70.5 | 462 | 392 | 52.3 |
+| NavierStokes  | 121 | 31.1 | 40.5 | 833 | 109 | 25.5 |
+| Splay  | 374 | 319 | 284 | 1265 | 36.7 | 132 |
+| Total score  | 145 | 54.2 | 43.0 | 623 | 167 | 34.8 |
+| Baseline  | 1 |  ▼ 1.67 | ▼ 2.37 | ▲ 3.29 | ▲ 0.15 | ▼ 3.16 |
+| File Size(KB)  | 210 | 152 | 134 | 434 | - | - |
+| Gzip Size(KB) | 54 | 40 | 34 | 245 | - | - |
 
 **Current progress:**
 1. Except for JSON, other logic has been completed
