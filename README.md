@@ -6,7 +6,11 @@
 
 sablejs may be the fastest interpreter written by JavaScript ([using v8 benchmark suites](https://github.com/mozilla/arewefastyet/tree/master/benchmarks/v8-v7)):
 
-> Benchmark enviorment: node.js v14.14.0 / AMD Ryzen5 3600 3.6GHz / Windows10
+> Benchmark Enviorment: 
+> * Node.js v14.14.0
+> * Golang 15
+> * AMD Ryzen5 3600 3.6GHz
+> * Windows10
 
 |     | sable.js  | sval  | eval5  | quickjs-wasm  | mujs  | otto | goja |
 |  ----  | ----  | ----  | ----  | ----  | ----  | ----  | ----  |
