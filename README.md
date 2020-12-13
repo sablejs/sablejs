@@ -28,6 +28,6 @@ sablejs may be the fastest interpreter written by JavaScript ([using v8 benchmar
 **Current progress:**
 1. Except for JSON, other logic has been completed
 2. Test262 has been integrated, now covered ~70% cases
-3. Improve VM performance, the newest version has surpassed goja, expecting to distribute quickjs-wasm 1.x times slower
+3. Improve VM performance, the newest version has surpassed goja, expecting to be 1.x times slower than quickjs-wasm
 
 It will be coming soon...
