@@ -12,7 +12,7 @@ sablejs may be the fastest interpreter written by JavaScript ([using v8 benchmar
 > * AMD Ryzen5 3600 3.6GHz
 > * Windows10
 
-|     | sable.js  | sval  | eval5  | quickjs-wasm  | mujs  | otto | goja |
+|     | sable.js(old)  | sval  | eval5  | quickjs-wasm  | mujs  | otto | goja |
 |  ----  | ----  | ----  | ----  | ----  | ----  | ----  | ----  |
 | Language  | JavaScript | JavaScript | JavaScript | C + WebAssembly | C | Golang | Golang |
 | Richards  | 86.4 | 26.4 | 17.9 | 406 | 187 | 19.4 | 181 |
@@ -28,5 +28,6 @@ sablejs may be the fastest interpreter written by JavaScript ([using v8 benchmar
 **Current progress:**
 1. Except for JSON, other logic has been completed
 2. Test262 has been integrated, now covered ~70% cases
+3. Improve VM performance, the newest version has surpassed goja, expecting to distribute quickjs-wasm 1.x times slower
 
 It will be coming soon...
