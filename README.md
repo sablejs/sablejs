@@ -9,6 +9,7 @@ sablejs may be the fastest interpreter written by JavaScript ([using v8 benchmar
 > Benchmark Enviorment: 
 > * Node.js v14.15.1
 > * Golang 1.15.6
+> * GCC 5.4.0 -O3
 > * AMD Ryzen 5 3600 6-Core Processor 3.59 GHz
 > * Windows 10 120.2212.551.0
 
