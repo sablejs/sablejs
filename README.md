@@ -10,19 +10,19 @@ sablejs may be the fastest interpreter written by JavaScript ([using v8 benchmar
 > * Node.js v14.15.1
 > * Golang 1.15.6
 > * GCC 5.4.0 -O3
-> * AMD Ryzen 5 3600 6-Core Processor 3.59 GHz
-> * Windows 10 120.2212.551.0
+> * 2.4 GHz Intel Core i9
+> * MacOS Mojave 10.14.6 (18G6032)
 
 |     | sable.js  | sval  | eval5  | quickjs-wasm  | mujs  | otto | goja |
 |  ----  | ----  | ----  | ----  | ----  | ----  | ----  | ----  |
 | Language  | JavaScript | JavaScript | JavaScript | C + WebAssembly | C | Golang | Golang |
-| Richards  | 102 | 26.9 | 17.9 | 399 | 187 | 19.4 | 181 |
-| Crypto  | 109 | 24.1 | 17.5 | 478 | 113 | 15 | 85.9 |
-| RayTrace  | 275 | 96.6 | 70.5 | 491 | 392 | 52.3 | 241 |
-| NavierStokes  | 160 | 29.9 | 40.5 | 847 | 109 | 25.5 | 148 |
-| Splay  | 464 | 374 | 296 | 1254 | 36.7 | 132 | 641 |
-| Total score  | 187 | 56.1 | 43.0 | 630 | 167 | 34.8 | 204 |
-| Baseline  | 1 |  ▼ 2.33 | ▼ 3.34 | ▲ 2.36 | ▼ 0.12 | ▼ 4.37 | ▲ 0.09 |
+| Richards  | 118 | 26.9 | 17.9 | 399 | 187 | 19.4 | 211 |
+| Crypto  | 120 | 24.1 | 17.5 | 478 | 113 | 15 | 106 |
+| RayTrace  | 301 | 96.6 | 70.5 | 491 | 392 | 52.3 | 302 |
+| NavierStokes  | 183 | 29.9 | 40.5 | 847 | 109 | 25.5 | 193 |
+| Splay  | 450 | 374 | 296 | 1254 | 36.7 | 132 | 1065 |
+| Total score  | 204 | 56.1 | 43.0 | 630 | 167 | 34.8 | 268 |
+| Baseline  | 1 |  ▼ 2.63 | ▼ 3.74 | ▲ 2.08 | ▼ 0.23 | ▼ 4.86 | ▲ 0.31 |
 | File Size(KB)  | 294 | 152 | 134 | 434 | - | - | - |
 | Gzip Size(KB) | 43 | 40 | 34 | 245 | - | - | - |
 
