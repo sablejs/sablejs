@@ -20,8 +20,8 @@ sablejs may be the fastest interpreter written by JavaScript ([using v8 benchmar
 | Crypto  | 120 | 28.8 | 21.4 | 412 | 113 | 19.2 | 107 |
 | RayTrace  | 297 | 102 | 102 | 512 | 392 | 64.5 | 301 |
 | NavierStokes  | 179 | 38.0 | 53.1 | 701 | 109 | 31.4 | 191 |
-| Total score  | 164 | 42.5 | 41.3 | 476 | 167 | 30.9 | 190 |
-| Baseline  | 1 |  ▼ 2.86 | ▼ 2.97 | ▲ 1.90 | ▲ 0.02 | ▼ 4.30 | ▲ 0.16 |
+| Total score  | 164 | 42.5 | 41.3 | 476 | 173 | 30.9 | 190 |
+| Baseline  | 1 |  ▼ 2.86 | ▼ 2.97 | ▲ 1.90 | ▲ 0.05 | ▼ 4.30 | ▲ 0.16 |
 | File Size(KB)  | 294 | 152 | 134 | 434 | - | - | - |
 | Gzip Size(KB) | 43 | 40 | 34 | 245 | - | - | - |
 
