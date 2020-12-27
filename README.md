@@ -16,13 +16,13 @@ sablejs may be the fastest interpreter written by JavaScript ([using v8 benchmar
 |     | sable.js  | sval  | eval5  | quickjs-wasm  | mujs  | otto | goja |
 |  ----  | ----  | ----  | ----  | ----  | ----  | ----  | ----  |
 | Language  | JavaScript | JavaScript | JavaScript | C + WebAssembly | C | Golang | Golang |
-| Richards  | 118 | 26.9 | 17.9 | 399 | 187 | 19.4 | 211 |
-| Crypto  | 120 | 24.1 | 17.5 | 478 | 113 | 15 | 106 |
-| RayTrace  | 301 | 96.6 | 70.5 | 491 | 392 | 52.3 | 302 |
-| NavierStokes  | 183 | 29.9 | 40.5 | 847 | 109 | 25.5 | 193 |
-| Splay  | 450 | 374 | 296 | 1254 | 36.7 | 132 | 1065 |
-| Total score  | 204 | 56.1 | 43.0 | 630 | 167 | 34.8 | 268 |
-| Baseline  | 1 |  ▼ 2.63 | ▼ 3.74 | ▲ 2.08 | ▼ 0.23 | ▼ 4.86 | ▲ 0.31 |
+| Richards  | 118 | 26.0 | 24.5 | 347 | 187 | 23.6 | 211 |
+| Crypto  | 120 | 28.2 | 21.9 | 414 | 113 | 19.3 | 106 |
+| RayTrace  | 301 | 99.0 | 101 | 520 | 392 | 64.6 | 302 |
+| NavierStokes  | 183 | 37.6 | 52.6 | 711 | 109 | 30.9 | 193 |
+| Splay  | 450 | 312 | 236 | 1227 | 36.7 | 164 | 1065 |
+| Total score  | 204 | 61.1 | 58.3 | 579 | 167 | 43.8 | 268 |
+| Baseline  | 1 |  ▼ 2.33 | ▼ 2.49 | ▲ 1.83 | ▼ 0.23 | ▼ 3.65 | ▲ 0.31 |
 | File Size(KB)  | 294 | 152 | 134 | 434 | - | - | - |
 | Gzip Size(KB) | 43 | 40 | 34 | 245 | - | - | - |
 
