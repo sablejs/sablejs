@@ -7,7 +7,7 @@
 sablejs may be the fastest interpreter written by JavaScript ([using v8 benchmark suites](https://github.com/mozilla/arewefastyet/tree/master/benchmarks/v8-v7)):
 
 > Benchmark Enviorment: 
-> * Node.js v14.15.1
+> * Node.js v12.13.1
 > * Golang 1.15.6
 > * GCC 5.4.0 -O3
 > * 2.4 GHz Intel Core i9
@@ -16,13 +16,12 @@ sablejs may be the fastest interpreter written by JavaScript ([using v8 benchmar
 |     | sable.js  | sval  | eval5  | quickjs-wasm  | mujs  | otto | goja |
 |  ----  | ----  | ----  | ----  | ----  | ----  | ----  | ----  |
 | Language  | JavaScript | JavaScript | JavaScript | C + WebAssembly | C | Golang | Golang |
-| Richards  | 118 | 26.0 | 24.5 | 347 | 187 | 23.6 | 211 |
-| Crypto  | 120 | 28.2 | 21.9 | 414 | 113 | 19.3 | 106 |
-| RayTrace  | 301 | 99.0 | 101 | 520 | 392 | 64.6 | 302 |
-| NavierStokes  | 183 | 37.6 | 52.6 | 711 | 109 | 30.9 | 193 |
-| Splay  | 450 | 312 | 236 | 1227 | 36.7 | 164 | 1065 |
-| Total score  | 204 | 61.1 | 58.3 | 579 | 167 | 43.8 | 268 |
-| Baseline  | 1 |  ▼ 2.33 | ▼ 2.49 | ▲ 1.83 | ▼ 0.23 | ▼ 3.65 | ▲ 0.31 |
+| Richards  | 112 | 29.4 | 25.1 | 347 | 187 | 23.4 | 210 |
+| Crypto  | 120 | 28.8 | 21.4 | 412 | 113 | 19.2 | 107 |
+| RayTrace  | 297 | 102 | 102 | 512 | 392 | 64.5 | 301 |
+| NavierStokes  | 179 | 38.0 | 53.1 | 701 | 109 | 31.4 | 191 |
+| Total score  | 164 | 42.5 | 41.3 | 476 | 167 | 30.9 | 190 |
+| Baseline  | 1 |  ▼ 2.858 | ▼ 2.97 | ▲ 1.90 | ▲ 0.018 | ▼ 4.30 | ▲ 0.158 |
 | File Size(KB)  | 294 | 152 | 134 | 434 | - | - | - |
 | Gzip Size(KB) | 43 | 40 | 34 | 245 | - | - | - |
 
