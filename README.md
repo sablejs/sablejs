@@ -22,8 +22,8 @@ sablejs may be the fastest interpreter written by JavaScript ([using v8 benchmar
 | NavierStokes  | 179 | 38.0 | 53.1 | 701 | 109 | 31.4 | 191 |
 | Total score  | 164 | 42.5 | 41.3 | 476 | 173 | 30.9 | 190 |
 | Baseline  | 1 |  ▼ 2.86 | ▼ 2.97 | ▲ 1.90 | ▲ 0.05 | ▼ 4.30 | ▲ 0.16 |
-| File Size(KB)  | 134 (only VM) | 152 | 134 | 434 | - | - | - |
-| Gzip Size(KB) | 20 (only VM) | 40 | 34 | 245 | - | - | - |
+| File Size(KB)  | 134(VM) | 152 | 134 | 434 | - | - | - |
+| Gzip Size(KB) | 20(VM) | 40 | 34 | 245 | - | - | - |
 
 **Current progress:**
 1. Except for JSON, other logic has been completed
