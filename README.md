@@ -26,7 +26,6 @@ sablejs may be the fastest interpreter written by JavaScript ([using v8 benchmar
 | Gzip Size(KB) | VM: 20 | 40 | 34 | 245 | - | - | - |
 
 **Current progress:**
-1. Except for JSON, other logic has been completed
-2. Test262 has been integrated, now covered ~70% cases
+1. Test262 has been integrated, now covered ~80% cases
 
 It will be coming soon...
