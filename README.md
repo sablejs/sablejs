@@ -23,8 +23,8 @@ sablejs may be the fastest interpreter written by JavaScript ([using v8 benchmar
 | NavierStokes  | 179 | 38.0 | 53.1 | 701 | 109 | 31.4 | 191 |
 | Total score  | 164 | 42.5 | 41.3 | 476 | 173 | 30.9 | 190 |
 | Baseline  | 1 |  ▼ 2.86 | ▼ 2.97 | ▲ 1.90 | ▲ 0.05 | ▼ 4.30 | ▲ 0.16 |
-| File Size(KB)  | VM: 134 | 152 | 134 | 434 | - | - | - |
-| Gzip Size(KB) | VM: 20 | 40 | 34 | 245 | - | - | - |
+| File Size(KB)  | VM: 343 | 152 | 134 | 434 | - | - | - |
+| Gzip Size(KB) | VM: 29 | 40 | 34 | 245 | - | - | - |
 
 **Current progress:**
 1. Test262 has been integrated, now covered ~80% cases.
