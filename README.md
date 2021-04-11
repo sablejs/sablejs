@@ -1,4 +1,6 @@
 # sablejs
+![Test262 CI](https://github.com/ErosZy/sablejs-private-repo/actions/workflows/test262.yml/badge.svg)
+
 🏖️ The safer and faster ECMA5.1 interpreter written by JavaScript, it can be used:
 1. Sandbox(like Figma Plugin Sandbox, but better and easy to use);
 2. Mini Program/Game JavaScript dynamic execution;
