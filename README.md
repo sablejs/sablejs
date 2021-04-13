@@ -30,4 +30,21 @@ sablejs may be the fastest interpreter written by JavaScript ([using v8 benchmar
 1. Test262 has been integrated, now covered ~80% cases.
 2. prod vm for open source after obfuscation, compiler closed source.
 
+**Limits:**
+1. Dynamic execution of eval and Function is forbidden, but direct passing of literal strings/number/undefined/null is allowed.
+```javascript
+eval("print('Hello World!')"); // it's ok
+eval("var " + "a=1"); // it's ok
+
+var str = "Hello World!";
+eval("print('" + str +"')"); // throw SyntaxError
+
+Function("a","b","return a+b"); // it's ok
+new Function("a", "b", "return a+b") // it's ok
+
+var str = "return a+b";
+Function("a","b", str); // throw SyntaxError
+new Function("a","b", str); // throw SyntaxError
+```
+
 It will be coming soon...
