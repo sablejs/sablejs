@@ -31,7 +31,7 @@ sablejs may be the fastest interpreter written by JavaScript ([using v8 benchmar
 2. Prod vm for open source after obfuscation, compiler closed source.
 
 **Limits:**
-1. Dynamic execution of eval and Function is forbidden, but passing of literal and undefined is allowed, because Interpreter doesn't contain our Compiler.
+1. Dynamic execution of eval and Function is forbidden, but passing of literal and undefined is allowed(the interpreter doesn't contain any compiler).
 ```javascript
 eval("print('Hello World!')"); // it's ok
 eval("var " + "a=1"); // it's ok
