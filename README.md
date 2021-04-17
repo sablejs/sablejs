@@ -14,20 +14,38 @@ sablejs may be the fastest interpreter written by JavaScript ([using v8 benchmar
 > * 2.4 GHz Intel Core i9
 > * MacOS Mojave 10.14.6 (18G6032)
 
-|     | sable.js  | sval  | eval5  | quickjs-wasm  | mujs  | otto | goja |
-|  ----  | ----  | ----  | ----  | ----  | ----  | ----  | ----  |
-| Language  | JavaScript | JavaScript | JavaScript | C + WebAssembly | C | Golang | Golang |
-| Richards  | 112 | 29.4 | 25.1 | 347 | 187 | 23.4 | 210 |
-| Crypto  | 120 | 28.8 | 21.4 | 412 | 113 | 19.2 | 107 |
-| RayTrace  | 297 | 102 | 102 | 512 | 392 | 64.5 | 301 |
-| NavierStokes  | 179 | 38.0 | 53.1 | 701 | 109 | 31.4 | 191 |
-| Total score  | 164 | 42.5 | 41.3 | 476 | 173 | 30.9 | 190 |
-| Baseline  | 1 |  ▼ 2.86 | ▼ 2.97 | ▲ 1.90 | ▲ 0.05 | ▼ 4.30 | ▲ 0.16 |
-| File Size(KB)  | VM: 343 | 152 | 134 | 434 | - | - | - |
-| Gzip Size(KB) | VM: 29 | 40 | 34 | 245 | - | - | - |
+|     | sable.js  | sval  | eval5  | quickjs-wasm  | goja |
+|  ----  | ----  | ----  | ----  | ----  |  ----  |
+| Language  | JavaScript | JavaScript | JavaScript | C + WebAssembly | Golang |
+| Richards  | 110 | 24.9 | 24.7 | 376 |  208 |
+| Crypto  | 114 | 24.6 | 20.2 | 400 | 104 |
+| RayTrace  | 258 | 92.2 | 98.5 | 471 |  294 |
+| NavierStokes  | 183 | 35.9 | 49.8 | 665 |  191 |
+| DeltaBlue  | 120 | 35.3 | 29.5 | 402 |  276 |
+| Total score  | 148 | 37.3 | 37.3 | 452 | 202 |
+| Baseline  | 1 |  ▼ 2.96 | ▼ 2.96 | ▲ 2.05 | ▲ 0.36 |
+| File Size(KB)  | 177 | 152 | 134 | 434 | - | - | - |
+| Gzip Size(KB) | 24 | 40 | 34 | 245 | - | - | - |
 
 **Current progress:**
 1. Test262 has been integrated, now covered ~80% cases.
-2. prod vm for open source after obfuscation, compiler closed source.
+2. Prod vm for open source after obfuscation, compiler closed source.
+
+**Limits:**
+1. Dynamic execution of eval and Function is forbidden, but passing of literal string/number/null and undefined is allowed(the interpreter doesn't contain any compiler).
+```javascript
+eval("print('Hello World!')"); // it's ok
+eval("var " + "a=1"); // it's ok
+
+var str = "Hello World!";
+eval("print('" + str +"')"); // throw SyntaxError
+
+Function("a","b","return a+b"); // it's ok
+new Function("a", "b", "return a+b") // it's ok
+
+var str = "return a+b";
+Function("a","b", str); // throw SyntaxError
+new Function("a","b", str); // throw SyntaxError
+```
 
 It will be coming soon...
