@@ -24,8 +24,8 @@ sablejs may be the fastest interpreter written by JavaScript ([using v8 benchmar
 | DeltaBlue  | 120 | 35.3 | 29.5 | 402 |  276 |
 | Total score  | 148 | 37.3 | 37.3 | 452 | 202 |
 | Baseline  | 1 |  ▼ 2.96 | ▼ 2.96 | ▲ 2.05 | ▲ 0.36 |
-| File Size(KB)  | 198 | 152 | 134 | 434 | - | - | - |
-| Gzip Size(KB) | 27 | 40 | 34 | 245 | - | - | - |
+| File Size(KB)  | 212 | 152 | 134 | 434 | - | - | - |
+| Gzip Size(KB) | 29 | 40 | 34 | 245 | - | - | - |
 
 **Current progress:**
 1. Test262 has been integrated, now covered ~95% cases.
