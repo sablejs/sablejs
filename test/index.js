@@ -329,6 +329,7 @@ function compile(codestr) {
   const ipath = `${os.tmpdir()}/sablejs.i.test.js`;
   const opath = `${os.tmpdir()}/sablejs.o.test.js`;
   fs.writeFileSync(ipath, codestr);
+  fs.writeFileSync(opath, "");
   let { error, output } = spawn.sync("node", [__dirname + "/../cli.js", "-i", ipath, "-o", opath]);
   if (error) {
     console.log(chalk.red(error));
