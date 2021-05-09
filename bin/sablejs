@@ -1,0 +1,26 @@
+#!/usr/bin/env node
+const prompts = require("prompts");
+const fs = require("fs");
+const filepath = __dirname + "/.aggrement";
+
+(async () => {
+  if (fs.existsSync(filepath)) {
+    require("../cli.js");
+    return;
+  }
+
+  const license = fs.readFileSync("./LICENSE").toString();
+  const response = await prompts({
+    type: "text",
+    name: "value",
+    message: `
+${license}
+I have carefully read the appeal license and agree to abide by the content. (Y)es/(N)o`,
+  });
+
+  const { value = "" } = response;
+  if (value.toLowerCase() === "y") {
+    fs.writeFileSync(filepath, value);
+    require("../cli.js");
+  }
+})();

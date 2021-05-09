@@ -27,11 +27,11 @@ sablejs may be the fastest interpreter written by JavaScript ([using v8 benchmar
 | File Size(KB)  | 212 | 152 | 134 | 434 | - | - | - |
 | Gzip Size(KB) | 29 | 40 | 34 | 245 | - | - | - |
 
-**Current progress:**
+### Current progress
 1. Test262 has been integrated, now covered ~95% cases.
 2. Prod vm for open source after obfuscation, compiler closed source.
 
-**Limits:**
+### Limits
 1. Dynamic execution of eval and Function is forbidden, but passing of literal string/number/null and undefined is allowed(the interpreter doesn't contain any compiler).
 ```javascript
 eval("print('Hello World!')"); // it's ok
@@ -47,5 +47,27 @@ var str = "return a+b";
 Function("a","b", str); // throw SyntaxError
 new Function("a","b", str); // throw SyntaxError
 ```
+### License
 
-It will be coming soon...
+sablejs JavaScript Engine
+
+Copyright (c) 2020-2021 ErosZhao
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+Non-profit projects of individuals or organizations or commercial projects with 
+commercial authorization of the author.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
