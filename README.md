@@ -1,5 +1,9 @@
 # sablejs
 
+![linux ci](https://github.com/sablejs/sablejs/actions/workflows/linux.yml/badge.svg)
+![osx ci](https://github.com/sablejs/sablejs/actions/workflows/osx.yml/badge.svg)
+![windows ci](https://github.com/sablejs/sablejs/actions/workflows/win.yml/badge.svg)
+
 🏖️ The safer and faster ECMA5.1 interpreter written by JavaScript, it can be used:
 1. Sandbox(like Figma Plugin Sandbox, but better and easy to use);
 2. Mini Program/Game JavaScript dynamic execution;
