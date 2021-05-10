@@ -3,6 +3,7 @@
 ![linux ci](https://github.com/sablejs/sablejs/actions/workflows/linux.yml/badge.svg)
 ![osx ci](https://github.com/sablejs/sablejs/actions/workflows/osx.yml/badge.svg)
 ![windows ci](https://github.com/sablejs/sablejs/actions/workflows/win.yml/badge.svg)
+<a href="https://www.npmjs.com/package/sablejs"><img src="https://img.shields.io/npm/v/sablejs.svg?sanitize=true" alt="Version"></a>
 
 🏖️ The safer and faster ECMA5.1 interpreter written by JavaScript, it can be used:
 1. Sandbox(like Figma Plugin Sandbox, but better and easy to use);
