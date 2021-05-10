@@ -6,6 +6,7 @@ var { terminal } = require("terminal-kit");
 const fs = require("fs");
 const path = require("path");
 
+const ARCH = process.arch;
 const VERSION = require("./package.json").version;
 const DOWNLOAD_PREFIX_URL = `https://github.com/sablejs/sablejs/releases/download/v${VERSION}/`;
 const PLATFORM = {
@@ -51,8 +52,9 @@ opath = path.resolve(opath);
     process.exit(1);
   }
 
-  const filename = `sablejs-${platform}-x64`;
-  const binpath = `${pkgpath}/${filename}`;
+  const filename = `sablejs-${platform}-${ARCH}`;
+  let binpath = `${pkgpath}/${filename}`;
+  binpath = platform === "win" ? `${binpath}.exe` : binpath;
   if (!fs.existsSync(binpath)) {
     if (!fs.existsSync(pkgpath)) {
       fs.mkdirSync(pkgpath);
@@ -70,7 +72,7 @@ opath = path.resolve(opath);
       url: `${DOWNLOAD_PREFIX_URL}/${filename}`,
       directory: pkgpath,
       maxAttempts: 3,
-      fileName: filename,
+      fileName: platform === "win" ? `${filename}.exe` : filename,
       onProgress: (percentage) => {
         progressBar.update(percentage / 100);
         if (percentage >= 100) {
