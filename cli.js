@@ -16,6 +16,7 @@ const PLATFORM = {
 };
 
 program
+  .version(VERSION, "-v, --vers", "output the current version")
   .option("-i, --input <path>", "compile input filepath")
   .option("-o, --output <path>", "compile output filepath")
   .option("-s, --slient", "don't output log")
@@ -85,7 +86,7 @@ opath = path.resolve(opath);
       await downloader.download();
       fs.chmodSync(binpath, 0777);
     } catch (e) {
-      console.log(`[ERROR] download failed: ${e.message}`);
+      console.log(chalk.red(`[ERROR] download failed: ${e.message}`));
       process.exit(1);
     }
   }
