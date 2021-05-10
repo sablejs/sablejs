@@ -318,8 +318,8 @@ function runTestCase(fn) {
 
 function isUseStirct(data) {
   data = data
-    .replace(/\/\/.+?\n\r?/g, "")
-    .replace(/\/\*[\s\S]+?\*\/\n\r?/g, "")
+    .replace(/\/\/.+?\r?\n/g, "")
+    .replace(/\/\*[\s\S]+?\*\/\r?\n/g, "")
     .replace(/\s+/, "");
 
   return /^["']use strict/.test(data);
