@@ -9,7 +9,7 @@ const filepath = __dirname + "/.aggrement";
     return;
   }
 
-  const license = fs.readFileSync("./LICENSE").toString();
+  const license = fs.readFileSync(__dirname + "/../LICENSE").toString();
   const response = await prompts({
     type: "text",
     name: "value",
