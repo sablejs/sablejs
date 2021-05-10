@@ -20,7 +20,6 @@
   ],
   "author": "ErosZhao",
   "bin": "bin/sablejs",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/sablejs/sablejs/issues"
   },
