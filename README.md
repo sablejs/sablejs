@@ -81,7 +81,7 @@ sablejs may be the fastest interpreter written by JavaScript ([using v8 benchmar
 > * 2.4 GHz Intel Core i9
 > * MacOS Mojave 10.14.6 (18G6032)
 
-|               | sable.js   | sval       | eval5      | quickjs-wasm    | goja   |
+|               | sablejs   | sval       | eval5      | quickjs-wasm    | goja   |
 | ------------- | ---------- | ---------- | ---------- | --------------- | ------ |
 | Language      | JavaScript | JavaScript | JavaScript | C + WebAssembly | Golang |
 | Richards      | 110        | 24.9       | 24.7       | 376             | 208    |
