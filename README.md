@@ -12,17 +12,28 @@
 
 sablejs covered ~95% [test262 es5-tests cases](https://github.com/tc39/test262/tree/es5-tests), it can be safely used in production.
 
-### Usage
+### Quick Start
 
 sablejs **separates the Compiler and Interpreter** independently, so we removed the dynamic related api from the spec(see [Limits 1](https://github.com/sablejs/sablejs#limits)). In short, you need to compile your JavaScript code with sablejs cli before you run it.
 
-#### Compiler
+#### Example
+
+Suppose we have the following code in `input.js`:
+```javascript
+function fib(n) {
+  return n < 2 ? n : fib(n - 1) + fib(n - 2);
+}
+
+print(fib(30));
+```
+
+#### Compile It!
 ```shell
 > npm i sablejs -g
 > sablejs -i input.js -o output # get output file that contains base64 string
 ```
 
-sablejs cli contains the following commands:
+sablejs cli includes the following commands:
 ```shell
 Usage: sablejs [options]
 
@@ -34,13 +45,13 @@ Options:
   -h, --help
 ```
 
-#### Interpreter
+#### Run It!
 
 ```shell
 > npm install sablejs --save
 ```
 
-or you can import to your html directly:
+or you can import to your html directly
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/sablejs@0.31.0/runtime.js"></script>
@@ -53,7 +64,7 @@ const VM = require("sablejs/runtime")();
   const resp = await fetch("<output url>");
   const data = await resp.text();
   const vm = new VM();
-  vm.run(data);
+  vm.run(data); // output 832040
   vm.destroy();
 })();
 ```
@@ -64,7 +75,7 @@ const fs = require('fs');
 const data = fs.readFileSync("<output filepath>").toString();
 const VM = require('sablejs/runtime')();
 const vm = new VM();
-vm.run(data);
+vm.run(data); // output 832040
 vm.destroy();
 ```
 
