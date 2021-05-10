@@ -10,6 +10,8 @@
 2. Mini Program/Game JavaScript dynamic execution;
 3. Protect JavaScript source code via AOT compiling to opcode;
 
+sablejs covered ~95% [test262 es5-tests cases](https://github.com/tc39/test262/tree/es5-tests), it can be safely used in production.
+
 ### Usage
 
 sablejs **separates the Compiler and Interpreter** independently, so we removed the dynamic related api from the spec(see [Limits 1](https://github.com/sablejs/sablejs#limits)). In short, you need to compile your JavaScript code with sablejs cli before you run it.
