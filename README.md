@@ -10,6 +10,69 @@
 2. Mini Program/Game JavaScript dynamic execution;
 3. Protect JavaScript source code via AOT compiling to opcode;
 
+### Usege
+
+sablejs **separates the Compiler and Interpreter** independently, so we removed the dynamic related api from the spec(see [Limits 1](https://github.com/sablejs/sablejs#limits)). In short, you need to compile your JavaScript code with sablejs cli before you run it.
+
+#### Compiler
+```shell
+> npm i sablejs -g
+> sablejs -i input.js -o output # get output file that contains base64 string
+```
+
+sablejs cli contains the following commands:
+```shell
+Usage: sablejs [options]
+
+Options:
+  -v, --vers           output the current version
+  -i, --input <path>   compile input filepath
+  -o, --output <path>  compile output filepath
+  -s, --slient         don't output log
+  -h, --help           display help for command
+```
+
+#### Interpreter
+
+```shell
+> npm install sablejs --save
+```
+
+or
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/sablejs@0.31.0/runtime.js"></script>
+```
+
+##### Browser
+```javascript
+const VM = require("sablejs/runtime")();
+
+(async () => {
+  const resp = await fetch("<output url>");
+  const data = await resp.text();
+  const vm = new VM();
+  vm.run(data);
+  vm.destroy();
+})();
+```
+
+##### Node
+```javascript
+const fs = require('fs');
+const data = fs.readFileSync("<output filepath>").toString();
+const VM = require('sablejs/runtime')();
+const vm = new VM();
+vm.run(data);
+vm.destroy();
+```
+
+
+### API
+It will be coming soon...
+
+### Benchmark
+
 sablejs may be the fastest interpreter written by JavaScript ([using v8 benchmark suites](https://github.com/mozilla/arewefastyet/tree/master/benchmarks/v8-v7)):
 
 > Benchmark Enviorment: 
@@ -19,22 +82,18 @@ sablejs may be the fastest interpreter written by JavaScript ([using v8 benchmar
 > * 2.4 GHz Intel Core i9
 > * MacOS Mojave 10.14.6 (18G6032)
 
-|     | sable.js  | sval  | eval5  | quickjs-wasm  | goja |
-|  ----  | ----  | ----  | ----  | ----  |  ----  |
-| Language  | JavaScript | JavaScript | JavaScript | C + WebAssembly | Golang |
-| Richards  | 110 | 24.9 | 24.7 | 376 |  208 |
-| Crypto  | 114 | 24.6 | 20.2 | 400 | 104 |
-| RayTrace  | 258 | 92.2 | 98.5 | 471 |  294 |
-| NavierStokes  | 183 | 35.9 | 49.8 | 665 |  191 |
-| DeltaBlue  | 120 | 35.3 | 29.5 | 402 |  276 |
-| Total score  | 148 | 37.3 | 37.3 | 452 | 202 |
-| Baseline  | 1 |  ▼ 2.96 | ▼ 2.96 | ▲ 2.05 | ▲ 0.36 |
-| File Size(KB)  | 212 | 152 | 134 | 434 | - | - | - |
-| Gzip Size(KB) | 29 | 40 | 34 | 245 | - | - | - |
-
-### Current progress
-1. Test262 has been integrated, now covered ~95% cases.
-2. Prod vm for open source after obfuscation, compiler closed source.
+|               | sable.js   | sval       | eval5      | quickjs-wasm    | goja   |
+| ------------- | ---------- | ---------- | ---------- | --------------- | ------ |
+| Language      | JavaScript | JavaScript | JavaScript | C + WebAssembly | Golang |
+| Richards      | 110        | 24.9       | 24.7       | 376             | 208    |
+| Crypto        | 114        | 24.6       | 20.2       | 400             | 104    |
+| RayTrace      | 258        | 92.2       | 98.5       | 471             | 294    |
+| NavierStokes  | 183        | 35.9       | 49.8       | 665             | 191    |
+| DeltaBlue     | 120        | 35.3       | 29.5       | 402             | 276    |
+| Total score   | 148        | 37.3       | 37.3       | 452             | 202    |
+| Baseline      | 1          | ▼ 2.96     | ▼ 2.96     | ▲ 2.05          | ▲ 0.36 |
+| File Size(KB) | 212        | 152        | 134        | 434             | -      | - | - |
+| Gzip Size(KB) | 29         | 40         | 34         | 245             | -      | - | - |
 
 ### Limits
 1. Dynamic execution of eval and Function is forbidden, but passing of literal string/number/null and undefined is allowed(the interpreter doesn't contain any compiler).
