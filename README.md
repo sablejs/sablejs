@@ -10,7 +10,7 @@
 2. Mini Program/Game JavaScript dynamic execution;
 3. Protect JavaScript source code via AOT compiling to opcode;
 
-### Usege
+### Usage
 
 sablejs **separates the Compiler and Interpreter** independently, so we removed the dynamic related api from the spec(see [Limits 1](https://github.com/sablejs/sablejs#limits)). In short, you need to compile your JavaScript code with sablejs cli before you run it.
 
@@ -28,8 +28,8 @@ Options:
   -v, --vers           output the current version
   -i, --input <path>   compile input filepath
   -o, --output <path>  compile output filepath
-  -s, --slient         don't output log
-  -h, --help           display help for command
+  -s, --slient         dont output log
+  -h, --help
 ```
 
 #### Interpreter
@@ -38,7 +38,7 @@ Options:
 > npm install sablejs --save
 ```
 
-or
+or you can import to your html directly:
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/sablejs@0.31.0/runtime.js"></script>
@@ -47,7 +47,6 @@ or
 ##### Browser
 ```javascript
 const VM = require("sablejs/runtime")();
-
 (async () => {
   const resp = await fetch("<output url>");
   const data = await resp.text();
@@ -92,8 +91,8 @@ sablejs may be the fastest interpreter written by JavaScript ([using v8 benchmar
 | DeltaBlue     | 120        | 35.3       | 29.5       | 402             | 276    |
 | Total score   | 148        | 37.3       | 37.3       | 452             | 202    |
 | Baseline      | 1          | ▼ 2.96     | ▼ 2.96     | ▲ 2.05          | ▲ 0.36 |
-| File Size(KB) | 212        | 152        | 134        | 434             | -      | - | - |
-| Gzip Size(KB) | 29         | 40         | 34         | 245             | -      | - | - |
+| File Size(KB) | 207        | 152        | 134        | 434             | -      |
+| Gzip Size(KB) | 29         | 40         | 34         | 245             | -      |
 
 ### Limits
 1. Dynamic execution of eval and Function is forbidden, but passing of literal string/number/null and undefined is allowed(the interpreter doesn't contain any compiler).
