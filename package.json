@@ -1,13 +1,14 @@
 {
   "name": "sablejs",
-  "version": "0.30.5",
+  "version": "0.30.6",
   "description": "🏖️ The safer and faster ECMA5.1 interpreter written by JavaScript.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sablejs/sablejs.git"
   },
   "scripts": {
-    "test": "cd test && node index.js"
+    "test": "cd test && node index.js",
+    "benchmark": "cd benchmark && node index.js"
   },
   "keywords": [
     "javascript",
