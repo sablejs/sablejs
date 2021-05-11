@@ -14,7 +14,7 @@ sablejs covered ~95% [test262 es5-tests cases](https://github.com/tc39/test262/t
 
 ### Quick Start
 
-sablejs **separates the Compiler and Interpreter** independently, so we removed the dynamic related api from the spec(see [Limits 1](https://github.com/sablejs/sablejs#limits)). In short, you need to compile your JavaScript code with sablejs cli before you run it.
+**sablejs includes the Compiler and Interpreter independently**, so we removed the dynamic related api from the spec(see [Limits 1](https://github.com/sablejs/sablejs#limits)). In short, you need to compile your JavaScript code with sablejs cli before you run it.
 
 #### Example
 
@@ -54,7 +54,7 @@ Options:
 or you can import to your html directly
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/sablejs@0.31.0/runtime.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sablejs@0.31.2/runtime.js"></script>
 ```
 
 ##### Browser
@@ -64,7 +64,7 @@ const VM = require("sablejs/runtime")();
   const resp = await fetch("<output url>");
   const data = await resp.text();
   const vm = new VM();
-  vm.run(data); // output 832040
+  vm.run(data); // print 832040
   vm.destroy();
 })();
 ```
@@ -75,7 +75,7 @@ const fs = require('fs');
 const data = fs.readFileSync("<output filepath>").toString();
 const VM = require('sablejs/runtime')();
 const vm = new VM();
-vm.run(data); // output 832040
+vm.run(data); // print 832040
 vm.destroy();
 ```
 
