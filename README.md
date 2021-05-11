@@ -54,7 +54,7 @@ Options:
 or you can import to your html directly
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/sablejs@0.31.2/runtime.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sablejs@0.32.0/runtime.js"></script>
 ```
 
 ##### Browser
