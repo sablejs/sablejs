@@ -58,7 +58,7 @@ Options:
 or you can import to your html directly
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/sablejs@0.34.0/runtime.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sablejs@0.35.0/runtime.js"></script>
 ```
 
 ##### Browser
@@ -90,126 +90,533 @@ vm.destroy();
 - VM.prototype.run(source)
   - source: String
   - `return:` undefined
+  
+Initialize the VM and execute the compiled source code.
+
+```javascript
+const VM = require('sablejs/runtime')();
+const vm = new VM();
+
+// source should be base64 string via sablejs compiling
+vm.run(`<compile source string>`);
+```
+
 - VM.prototype.getGlobal()
   - `return:` Value
+
+Returns the `global` in the VM, which is similar to the `window` in browser and the `global` in Node.js.
+
+```javascript
+const global = vm.getGlobal();
+```
+
 - VM.prototype.createUndefined()
   - `return` Value
+
+Create an `undefined` boxed type.
+
+```javascript
+const vUndefined = vm.createUndefined();
+```
+
 - VM.prototype.createNull()
   - `return:` Value
+
+Create an `null` boxed type.
+
+```javascript
+const vNull = vm.createNull();
+```
+
 - VM.prototype.createBoolean(bool)
   - bool: Boolean
   - `return` Value
+
+Create an `bool` boxed type.
+
+```javascript
+const vBoolean = vm.createBoolean(true);
+```
+
 - VM.prototype.createNumber(num)
   - num: Number
   - `return` Value
+
+Create an `number` boxed type.
+
+```javascript
+const vNumber = vm.createNumber(1024);
+```
+
 - VM.prototype.createString(str)
   - str: String
   - `return` Value
+
+Create an `string` boxed type.
+
+```javascript
+const vString = vm.createString('Hello World!');
+```
+
+
 - VM.prototype.createObject()
   - `return` Value
+
+Create an `object` boxed type.
+
+```javascript
+const vObject = vm.createObject();
+```
+
 - VM.prototype.createArray(length)
   - length: Number | undefined
   - `return` Value
+
+Create an `array` boxed type.
+
+```javascript
+const vArray1 = vm.createArray();
+// or
+const vArray2 = vm.createArray(128);
+```
+
 - VM.prototype.createFunction(name, func)
   - name: String
   - func: Function
   - `return` Value
+
+Create an `funcntion` boxed type. It receives a function name and the specific implementation of the function. Both the `function parameter` and `this` are boxed types in `func`.
+
+```javascript
+const vFuncntion = vm.createFunction("trim", function(str) {
+  // this is the undefined or new's instannce boxed type
+  // str maybe the string boxed type, we need to check it
+});
+```
+
 - VM.prototype.createError(message)
   - message: String | undefined
   - `return` Value
+
+Create an `error` boxed type.
+
+```javascript
+const vError1 = vm.createError();
+// or
+const vError2 = vm.createError("unknown error");
+```
+
 - VM.prototype.createRegExp(pattern, flags)
   - pattern: String
   - flags: String | undefined
   - `return` Value
+
+Create an `regexp` boxed type.
+
+```javascript
+const vRegExp = vm.createRegExp("\\w+", "ig");
+```
+
 - VM.prototype.createDate()
   - `return` Value
+
+Create an `date` boxed type.
+
+```javascript
+const vDate = vm.createDate();
+```
+
 - VM.prototype.isUndefined(value)
   - value: Value
   - `return` Boolean
+
+Used to determine if the type is `undefinend`.
+
+```javascript
+const vUndefined = vm.createUndefined();
+if(vm.isUndefined(vUndefined)) {
+  // ...
+}
+```
+
 - VM.prototype.isNull(value)
   - value: Value
   - `return` Boolean
+
+Used to determine if the type is `null`.
+
+```javascript
+const vNull = vm.createNull();
+if(vm.isNull(vNull)) {
+  // ...
+}
+```
+
 - VM.prototype.isBoolean(value)
   - value: Value
   - `return` Boolean
+
+Used to determine if the type is `bool`.
+
+```javascript
+const vBoolean = vm.createBoolean(true);
+if(vm.isBoolean(vBoolean)) {
+  // ...
+}
+```
+
 - VM.prototype.isNumber(value)
   - value: Value
   - `return` Boolean
+
+Used to determine if the type is `number`.
+
+```javascript
+const vNumber = vm.createNumber(1024);
+if(vm.isNumber(vNumber)) {
+  // ...
+}
+```
+
 - VM.prototype.isString(value)
   - value: Value
   - `return` Boolean
+
+Used to determine if the type is `string`.
+
+```javascript
+const vString = vm.createString("Hello World!");
+if(vm.isString(vString)) {
+  // ...
+}
+```
+
 - VM.prototype.isObject(value)
   - value: Value
   - `return` Boolean
+
+Used to determine if the type is `object`.
+
+```javascript
+const vObject = vm.createObject();
+const vArray = vm.createArray();
+if(vm.isObject(vObject) && vm.isObject(vArray)) {
+  // ...
+}
+```
+
 - VM.prototype.isArray(value)
   - value: Value
   - `return` Boolean
+
+Used to determine if the type is `array`.
+
+```javascript
+const vArray = vm.createArray();
+if(vm.isArray(vArray)) {
+  // ...
+}
+```
+
 - VM.prototype.isFunction(value)
   - value: Value
   - `return` Boolean
+
+Used to determine if the type is `function`.
+
+```javascript
+const vFunction = vm.createFunction("log", function(){});
+if(vm.isFunction(vFunction)){
+  // ...
+}
+```
+
 - VM.prototype.isError(value)
   - value: Value
   - `return` Boolean
+
+Used to determine if the type is `error`.
+
+```javascript
+const vError = vm.createError('unknown error');
+if(vm.isError(vError)){
+  // ...
+}
+```
+
 - VM.prototype.isRegExp(value)
   - value: Value
   - `return` Boolean
+
+Used to determine if the type is `regexp`.
+
+```javascript
+const vRegExp = vm.createRegExp("\\w+", "ig");
+if(vm.isRegExp(vRegExp)){
+  // ...
+}
+```
+
 - VM.prototype.isDate(value)
   - value: Value
   - `return` Boolean
+
+Used to determine if the type is `date`.
+
+```javascript
+const vDate = vm.createDate();
+if(vm.isDate(vDate)){
+  // ...
+}
+```
+
 - VM.prototype.asBoolean(value)
   - value: Value
   - `return` Boolean
+
+Converting `bool` boxed type to `plain bool` value.
+
+```javascript
+const vBoolean = vm.createBoolean(true);
+const boolean = vm.asBoolean(vBoolean);
+if(boolean === true) {
+  // ...
+}
+```
+
 - VM.prototype.asNumber(value)
   - value: Value
   - `return` Number
+
+Converting `number` boxed type to `plain number` value.
+
+```javascript
+const vNumber = vm.createNumber(1024);
+const number = vm.asNumber(vNumber);
+if(number === 1024) {
+  // ...
+}
+```
+
 - VM.prototype.asString(value)
   - value: Value
   - `return` String
+
+Converting `string` boxed type to `plain string` value.
+
+```javascript
+const vString = vm.createString('Hello World!');
+const string = vm.asString(vString);
+if(string === 'Hello World!') {
+  // ...
+}
+```
+
 - VM.prototype.instanceof(lval, rval)
   - lval: Value
   - rval: Value
   - `return` Boolean
+
+Equivalent to the `instanceof` keyword.
+
+```javascript
+const global = vm.getGlobal();
+const vDateFunc = vm.getProperty(global, "Date");
+const vDate = vm.createDate();
+if(vm.instanceof(vDate, vDateFunc)) {
+  // ...
+}
+```
+
 - VM.prototype.typeof(value)
   - value: Value
   - `return` String
+
+Equivalent to the `typeof` keyword.
+
+```javascript
+const vString = vm.createString('Hello World!');
+if(vm.typeof(vString) === "string") {
+  // ...
+}
+```
+
 - VM.prototype.getProperty(value, name)
   - value: Value
   - name: String
   - `return` Value
+
+Get the value of the property of the object. Return is a property boxed type.
+
+```javascript
+const global = vm.getGlobal();
+const vPrint = vm.getProperty(global, "print");
+if(vm.isFunction(vPrint)) {
+  // ...
+}
+```
+
 - VM.prototype.setProperty(value, name, property)
   - value: Value
   - name: String
   - property: Value
   - `return` Value
+
+Assigning the property to object. Return is a property boxed type.
+
+```javascript
+const global = vm.getGlobal();
+const console = vm.createObject();
+const log = vm.createFunction("log", function() {
+  // console.log impl
+});
+
+vm.setProperty(console, "log", log);
+vm.setProperty(global, "console", console);
+```
+
 - VM.prototype.deleteProperty(value, name)
   - value: Value
   - name: String
   - `return` Boolean
+
+Delete the property of object.
+
+```javascript
+const global = vm.getGlobal();
+vm.deleteProperty(global, "print");
+
+const vPrint = vm.getProperty(global, "print");
+if(vm.isUndefined(vPrint)) {
+  // ...
+} 
+```
+
 - VM.prototype.defineProperty(value, name, desc)
   - value: Value
   - name: String
   - desc: Object
   - `return` Value
+
+Equivalent to the `Object.defineProperty` keyword.
+
+```javascript
+const vObject = vm.createObject();
+vm.defineProperty(vObject, "name", { 
+  value: vm.createString("sablejs"),
+});
+
+const getter = vm.createFunction("getter", functionn() {
+  return vm.createNumber("101");
+});
+
+const setter = vm.createFunction("setter", function(age) {
+  vm.setProperty(this, "__age__", age);
+});
+
+vm.defineProperty(vObject, "age", {
+  enumerable: false,
+  get: getter,
+  set: setter,
+});
+
+```
+
 - VM.prototype.getPrototype(value)
   - value: Value
   - `return` Value
+
+Get the prototype of object.
+
+```javascript
+const global = vm.getGlobal();
+const vStringFunc = vm.getProperty(global, "String");
+if(!vm.isUndefined(vStringFunc)) {
+  const vTrimStart = vm.createFunction("trimStart", function() {
+    const str = vm.asString(this);
+    return vm.createString(str);
+  });
+
+  const vStringFuncProto = vm.getPrototype(vStringFunc);
+  vm.setProperty(vStringFuncProto, "trimStart", vTrimStart);
+}
+```
+
 - VM.prototype.setPrototype(value, prototype)
   - value: Value
   - prototype: Value
   - `return` Value
+
+Set the prototype of object.
+
+```javascript
+const vA = vm.createFunction("A", function() {});
+const vObject = vm.createObject();
+
+vm.setProperty(vObject, 'name', vm.createString('Hello World!'));
+vm.setPrototype(vA, vObject);
+```
+
 - VM.prototype.throw(value)
   - value: Value
   - `return` undefined
-- VM.prototype.new(func)
+
+Equivalent to the `throw` keyword.
+
+```javascript
+const vError = vm.createError('unknown error');
+vm.throw(vError);
+```
+
+- VM.prototype.new(func[, arg1, arg2, arg3...])
   - func: Value
+  - arg: Value
   - `return` Value
+
+Equivalent to the `new` keyword.
+
+```javascript
+const vA = vm.createFunction('A', function(name) {
+  vm.setProperty(this, 'name', name);
+});
+
+vm.new(vA, vm.createString("A"));
+```
+
 - VM.prototype.call(func, thisPtr[, arg1, arg2, arg3...])
   - func: Value
   - thisPtr: Value | undefined
   - arg: Value
   - `return` Value
+
+Equivalent to the `Function.prototype.call`.
+
+```javascript
+const vLog = vm.createFunction('log', function() {
+  const temp = [];
+  for(let i = 0; i < arguments.length; i++){
+    temp.push(vm.asString(arguments[i]));
+  }
+  console.log(...temp); // '1', 1, false
+});
+
+vm.call(
+  vLog, 
+  vm.createUndefined(), 
+  vm.createString('1'), 
+  vm.createNumber(1), 
+  vm.createBoolean(false)
+);
+```
+
 - VM.prototype.destroy
   - `return` undefined
+
+Destroy VM instance.
+
+```javascript
+vm.destroy();
+```
 
 ### Benchmark
 
