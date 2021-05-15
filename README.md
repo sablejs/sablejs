@@ -19,21 +19,20 @@ sablejs covered ~95% [test262 es5-tests cases](https://github.com/tc39/test262/t
 
 #### Example
 
-Suppose we have the following code in `input.js`:
+Suppose we have the following code in `fib.js`:
 
 ```javascript
-function fib(n) {
-  return n < 2 ? n : fib(n - 1) + fib(n - 2);
-}
-
-print(fib(30));
+var start = Date.now();
+var n = fib(36);
+print("[INFO] fib: " + n);
+print("[INFO] time consuming: " + (Date.now() - start) + "ms");
 ```
 
 #### Compile It!
 
 ```shell
 > npm i sablejs -g
-> sablejs -i input.js -o output # get output file that contains base64 string
+> sablejs -i fib.js -o output # get output file that contains base64 string
 ```
 
 sablejs cli includes the following commands:
@@ -65,11 +64,25 @@ or you can import to your html directly
 
 ```javascript
 const VM = require("sablejs/runtime")();
+
+function __fib__(n) {
+  return n < 2 ? n : __fib__(n - 1) + __fib__(n - 2);
+}
+
+// export fib function to vm call
+const vm = new VM();
+const global = vm.getGlobal();
+const fib = vm.createFunction("fib", function (n) {
+  n = vm.asNumber(n);
+  return vm.createNumber(__fib__(n));
+});
+
+vm.setProperty(global, "fib", fib);
+
 (async () => {
   const resp = await fetch("<output url>");
   const data = await resp.text();
-  const vm = new VM();
-  vm.run(data); // print 832040
+  vm.run(data);
   vm.destroy();
 })();
 ```
@@ -77,11 +90,23 @@ const VM = require("sablejs/runtime")();
 ##### Node
 
 ```javascript
-const fs = require("fs");
-const data = fs.readFileSync("<output filepath>").toString();
 const VM = require("sablejs/runtime")();
+const fs = require("fs");
+
+function __fib__(n) {
+  return n < 2 ? n : __fib__(n - 1) + __fib__(n - 2);
+}
+
+// export fib function to vm call
 const vm = new VM();
-vm.run(data); // print 832040
+const global = vm.getGlobal();
+const fib = vm.createFunction("fib", function (n) {
+  n = vm.asNumber(n);
+  return vm.createNumber(__fib__(n));
+});
+
+vm.setProperty(global, "fib", fib);
+vm.run(fs.readFileSync("<output path>").toString());
 vm.destroy();
 ```
 
