@@ -22,10 +22,13 @@ sablejs covered ~95% [test262 es5-tests cases](https://github.com/tc39/test262/t
 Suppose we have the following code in `fib.js`:
 
 ```javascript
+function fib(n) {
+  return n < 2 ? n : fib(n - 1) + fib(n - 2);
+}
+
 var start = Date.now();
-var n = fib(36);
-print("[INFO] fib: " + n);
-print("[INFO] time consuming: " + (Date.now() - start) + "ms");
+console.log("[INFO] fib: " + fib(30));
+console.log("[INFO] time consuming: " + (Date.now() - start) + "ms");
 ```
 
 #### Compile It!
@@ -57,7 +60,7 @@ Options:
 or you can import to your html directly
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/sablejs@0.35.0/runtime.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sablejs@0.35.1/runtime.js"></script>
 ```
 
 ##### Browser
@@ -65,19 +68,22 @@ or you can import to your html directly
 ```javascript
 const VM = require("sablejs/runtime")();
 
-function __fib__(n) {
-  return n < 2 ? n : __fib__(n - 1) + __fib__(n - 2);
-}
-
-// export fib function to vm call
+// import console.log function to vm call
 const vm = new VM();
-const global = vm.getGlobal();
-const fib = vm.createFunction("fib", function (n) {
-  n = vm.asNumber(n);
-  return vm.createNumber(__fib__(n));
+const vGlobal = vm.getGlobal();
+const vConsole = vm.createObject();
+const vLog = vm.createFunction("log", function () {
+  var temp = [];
+  for (let i = 0; i < arguments.length; i++) {
+    temp.push(vm.asString(arguments[i]));
+  }
+
+  console.log(...temp);
+  return vm.createUndefined();
 });
 
-vm.setProperty(global, "fib", fib);
+vm.setProperty(vConsole, "log", vLog);
+vm.setProperty(vGlobal, "console", vConsole);
 
 (async () => {
   const resp = await fetch("<output url>");
@@ -93,20 +99,25 @@ vm.setProperty(global, "fib", fib);
 const VM = require("sablejs/runtime")();
 const fs = require("fs");
 
-function __fib__(n) {
-  return n < 2 ? n : __fib__(n - 1) + __fib__(n - 2);
-}
-
-// export fib function to vm call
+// import console.log function to vm call
 const vm = new VM();
-const global = vm.getGlobal();
-const fib = vm.createFunction("fib", function (n) {
-  n = vm.asNumber(n);
-  return vm.createNumber(__fib__(n));
+const vGlobal = vm.getGlobal();
+const vConsole = vm.createObject();
+const vLog = vm.createFunction("log", function () {
+  var temp = [];
+  for (let i = 0; i < arguments.length; i++) {
+    temp.push(vm.asString(arguments[i]));
+  }
+
+  console.log(...temp);
+  return vm.createUndefined();
 });
 
-vm.setProperty(global, "fib", fib);
-vm.run(fs.readFileSync("<output path>").toString());
+vm.setProperty(vConsole, "log", vLog);
+vm.setProperty(vGlobal, "console", vConsole);
+
+// please run: sablejs -i fib.js -o output
+vm.run(fs.readFileSync("./output").toString());
 vm.destroy();
 ```
 
@@ -393,6 +404,28 @@ const vDate = vm.createDate();
 if(vm.isDate(vDate)){
   // ...
 }
+```
+
+- VM.prototype.asUndefined(value)
+- value: Value
+- `return` undefined
+
+Converting `undefined` boxed type to `plain undefined` value.
+
+```javascript
+const vUndefined = vm.createUndefined();
+vm.asUndefined(vUndefined) === undefined;
+```
+
+- VM.prototype.asNull(value)
+- value: Value
+- `return` null
+
+Converting `null` boxed type to `plain null` value.
+
+```javascript
+const vNull = vm.createNull();
+vm.asNull(vNull) === null;
 ```
 
 - VM.prototype.asBoolean(value)

@@ -215,6 +215,20 @@ describe("#isDate()", function () {
   });
 });
 
+describe("#asUndefined()", function () {
+  it("should return plain undefined", function () {
+    const vUndefined = vm.createUndefined();
+    assert(vm.asUndefined(vUndefined) === undefined);
+  });
+});
+
+describe("#asNull()", function () {
+  it("should return plain null", function () {
+    const vNull = vm.createNull();
+    assert(vm.asNull(vNull) === null);
+  });
+});
+
 describe("#asBoolean()", function () {
   it("should return plain boolean", function () {
     const vBoolean = vm.createBoolean(true);
@@ -274,7 +288,7 @@ describe("#getProperty()", function () {
 });
 
 describe("#setProperty()", function () {
-  it("set prototype should work.", function () {
+  it("object set prototype should work.", function () {
     const global = vm.getGlobal();
     const console = vm.createObject();
     const log = vm.createFunction("log", function () {});
@@ -286,6 +300,20 @@ describe("#setProperty()", function () {
     const vFunction = vm.getProperty(vObject, "log");
     assert(vm.isObject(vObject));
     assert(vm.isFunction(vFunction));
+  });
+
+  it("array set prototype should work.", function () {
+    const array = vm.createArray();
+    vm.setProperty(array, 0, vm.createString("Hello World!"));
+    vm.setProperty(array, 1, vm.createBoolean(false));
+    vm.setProperty(array, 2, vm.createNumber(1024));
+
+    assert(vm.isString(vm.getProperty(array, 0)));
+    assert(vm.isBoolean(vm.getProperty(array, 1)));
+    assert(vm.isNumber(vm.getProperty(array, 2)));
+    assert.equal(vm.asString(vm.getProperty(array, 0)), "Hello World!");
+    assert.equal(vm.asBoolean(vm.getProperty(array, 1)), false);
+    assert.equal(vm.asNumber(vm.getProperty(array, 2)), 1024);
   });
 });
 

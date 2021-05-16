@@ -1,18 +1,22 @@
 const VM = require("../runtime")();
 const fs = require("fs");
 
-function __fib__(n) {
-  return n < 2 ? n : __fib__(n - 1) + __fib__(n - 2);
-}
-
 const vm = new VM();
-const global = vm.getGlobal();
-const fib = vm.createFunction("fib", function (n) {
-  n = vm.asNumber(n);
-  return vm.createNumber(__fib__(n));
+const vGlobal = vm.getGlobal();
+const vConsole = vm.createObject();
+const vLog = vm.createFunction("log", function () {
+  var temp = [];
+  for (let i = 0; i < arguments.length; i++) {
+    temp.push(vm.asString(arguments[i]));
+  }
+
+  console.log(...temp);
+  return vm.createUndefined();
 });
 
-vm.setProperty(global, "fib", fib);
+vm.setProperty(vConsole, "log", vLog);
+vm.setProperty(vGlobal, "console", vConsole);
 
 // please run: sablejs -i fib.js -o output
 vm.run(fs.readFileSync("./output").toString());
+vm.destroy();
