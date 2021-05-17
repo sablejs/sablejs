@@ -68,7 +68,7 @@ Options:
 你也可以直接通过script标签进行运行时的引入：
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/sablejs@0.35.2/runtime.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sablejs@1.0.1/runtime.js"></script>
 ```
 
 ##### 浏览器环境
@@ -478,6 +478,20 @@ if(string === 'Hello World!') {
 }
 ```
 
+- VM.prototype.asObject(value)
+  - value: Value
+  - `return` Object
+
+将 `object` 包装类型转换为内部的 `object` 类型。
+
+```javascript
+const vObject = vm.createFunction("asObject", function(){});
+const object = vm.asObject(vObject);
+if(object.type === 12) {
+  // ...
+}
+```
+
 - VM.prototype.instanceof(lval, rval)
   - lval: Value
   - rval: Value
@@ -706,8 +720,8 @@ sablejs也许是使用JavaScript编写的JavaScript引擎中最快的实现 ([�
 | DeltaBlue     | 120        | 35.3       | 29.5       | 402             | 276    |
 | Total score   | 148        | 37.3       | 37.3       | 452             | 202    |
 | Baseline      | 1          | ▼ 2.96     | ▼ 2.96     | ▲ 2.05          | ▲ 0.36 |
-| File Size(KB) | 220        | 152        | 134        | 434             | -      |
-| Gzip Size(KB) | 31         | 40         | 34         | 245             | -      |
+| File Size(KB) | 216        | 152        | 134        | 434             | -      |
+| Gzip Size(KB) | 29         | 40         | 34         | 245             | -      |
 
 ### 限制
 
