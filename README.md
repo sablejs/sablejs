@@ -23,7 +23,7 @@ sablejs covered ~95% [test262 es5-tests cases](https://github.com/tc39/test262/t
 
 ### Quick Start
 
-**sablejs includes the Compiler and Interpreter independently**, so we removed the dynamic related api from the spec(see [Limits 1](https://github.com/sablejs/sablejs#limits)). In short, you need to compile your JavaScript code with sablejs cli before you run it.
+**sablejs includes the Compiler and Interpreter independently**, so we removed the related dynamic api from the spec(see [Limits 1](https://github.com/sablejs/sablejs#limits)). In short, you need to compile your JavaScript code with sablejs cli before you run it.
 
 #### Example
 
@@ -68,7 +68,7 @@ Options:
 or you can import to your html directly
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/sablejs@0.35.2/runtime.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sablejs@1.0.0/runtime.js"></script>
 ```
 
 ##### Browser
@@ -727,6 +727,8 @@ var str = "return a+b";
 Function("a", "b", str); // throw SyntaxError
 new Function("a", "b", str); // throw SyntaxError
 ```
+
+2. The browser environment relies on native browser functions such as `btoa` / `unescape` / `decodeURIComponent`, etc. if you need support for IE9 or below, you need to add shims.
 
 ### License
 

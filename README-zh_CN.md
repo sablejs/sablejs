@@ -728,6 +728,8 @@ Function("a", "b", str); // throw SyntaxError
 new Function("a", "b", str); // throw SyntaxError
 ```
 
+2. 浏览器环境中需要支持`btoa`、`unescape`、`decodeURIComponent`等原生函数，若果你想在IE9及以下使用，请自行添加相关的shims。
+
 ### 使用协议
 
 sablejs JavaScript Engine
