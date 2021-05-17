@@ -338,7 +338,6 @@ function compile(codestr) {
 
   output = Buffer.concat(output.filter((v) => !!v));
   output = output.toString().trim();
-  console.log(output);
   if (/^\[ERROR\]/.test(output)) {
     throw output;
   } else {

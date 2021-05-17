@@ -70,7 +70,7 @@ opath = path.resolve(opath);
     });
 
     const downloader = new Downloader({
-      url: `${DOWNLOAD_PREFIX_URL}/${filename}`,
+      url: `${DOWNLOAD_PREFIX_URL}${filename}`,
       directory: pkgpath,
       maxAttempts: 3,
       fileName: platform === "win" ? `${filename}.exe` : filename,
