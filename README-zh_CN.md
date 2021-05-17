@@ -5,29 +5,29 @@
 ![windows ci](https://github.com/sablejs/sablejs/actions/workflows/win.yml/badge.svg)
 <a href="https://www.npmjs.com/package/sablejs"><img src="https://img.shields.io/npm/v/sablejs.svg?sanitize=true" alt="Version"></a>
 
-English | [简体中文](./README-zh_CN.md)
+[English](./README.md) | 简体中文
 
-🏖️ The safer and faster ECMA5.1 interpreter written by JavaScript, it can be used:
+🏖️ 使用JavaScript编写的更快更安全的JavaScript解释器，其可以用来：
 
-1. Sandbox(like Figma Plugin Sandbox, but better and easy to use);
-2. Mini Program/Game JavaScript dynamic execution;
-3. Protect JavaScript source code via AOT compiling to opcode;
+1. 执行沙盒(类似于Figma的插件沙盒，但是更易于使用)；
+2. 小游戏/小程序的动态执行；
+3. 通过将JavaScript编译为opcode进行代码保护；
 
-sablejs covered ~95% [test262 es5-tests cases](https://github.com/tc39/test262/tree/es5-tests), it can be safely used in production.
+sablejs已经覆盖了约95%的 [test262 es5-tests cases](https://github.com/tc39/test262/tree/es5-tests)，其可以很安全可靠的用于你的生产之中。
 
-* [Quick Start](https://github.com/sablejs/sablejs#quick-start)
-* [APIs](https://github.com/sablejs/sablejs#apis)
-* [Benchmark](https://github.com/sablejs/sablejs#benchmark)
-* [Limits](https://github.com/sablejs/sablejs#limits)
-* [License](https://github.com/sablejs/sablejs#license)
+* [快速开始](https://github.com/sablejs/sablejs/blob/master/README-zh_CN.md#快速开始)
+* [APIs](https://github.com/sablejs/sablejs/blob/master/README-zh_CN.md#apis)
+* [性能测试](https://github.com/sablejs/sablejs/blob/master/README-zh_CN.md#性能测试)
+* [限制](https://github.com/sablejs/sablejs/blob/master/README-zh_CN.md#限制)
+* [使用协议](https://github.com/sablejs/sablejs/blob/master/README-zh_CN.md#使用协议)
 
-### Quick Start
+### 快速开始
 
-**sablejs includes the Compiler and Interpreter independently**, so we removed the dynamic related api from the spec(see [Limits 1](https://github.com/sablejs/sablejs#limits)). In short, you need to compile your JavaScript code with sablejs cli before you run it.
+**sablejs分离出了编译器和解释器**，因此我们移除了规范之中一些需要动态执行的相关API(详情见 [限制](https://github.com/sablejs/sablejs/blob/master/README-zh_CN.md#限制))。简而言之, 你需要先使用sablejs cli编译你的JavaScript代码，然后才能使用解释器进行执行。
 
-#### Example
+#### 示例代码
 
-Suppose we have the following code in `fib.js`:
+假设我们编写了 `fib.js` 中的代码:
 
 ```javascript
 function fib(n) {
@@ -39,39 +39,39 @@ console.log("[INFO] fib: " + fib(30));
 console.log("[INFO] time consuming: " + (Date.now() - start) + "ms");
 ```
 
-#### Compile It!
+#### 编译代码
 
 ```shell
 > npm i sablejs -g
-> sablejs -i fib.js -o output # get output file that contains base64 string
+> sablejs -i fib.js -o output # 你将获得一个base64字符串的生成文件
 ```
 
-sablejs cli includes the following commands:
+sablejs cli包含了如下的命令:
 
 ```shell
 Usage: sablejs [options]
 
 Options:
-  -v, --vers           output the current version
-  -i, --input <path>   compile input filepath
-  -o, --output <path>  compile output filepath
-  -s, --slient         dont output log
+  -v, --vers           输出当前版本号
+  -i, --input <path>   指定编译的文件路径
+  -o, --output <path>  指定输出的文件路径
+  -s, --slient         静默模式，不输出日志
   -h, --help
 ```
 
-#### Run It!
+#### 执行代码
 
 ```shell
 > npm install sablejs --save
 ```
 
-or you can import to your html directly
+你也可以直接通过script标签进行运行时的引入：
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/sablejs@0.35.2/runtime.js"></script>
 ```
 
-##### Browser
+##### 浏览器环境
 
 ```javascript
 const VM = require("sablejs/runtime")();
@@ -101,7 +101,7 @@ vm.setProperty(vGlobal, "console", vConsole);
 })();
 ```
 
-##### Node
+##### Node.js环境
 
 ```javascript
 const VM = require("sablejs/runtime")();
@@ -134,8 +134,8 @@ vm.destroy();
 - VM.prototype.run(source)
   - source: String
   - `return:` undefined
-  
-Initialize the VM and execute the compiled source code.
+
+初始化VM并执行编译的代码。  
 
 ```javascript
 const VM = require('sablejs/runtime')();
@@ -148,7 +148,7 @@ vm.run(`<compile source string>`);
 - VM.prototype.getGlobal()
   - `return:` Value
 
-Returns the `global` in the VM, which is similar to the `window` in browser and the `global` in Node.js.
+返回VM的 `global` 对象，其类似于浏览器环境中的 `window` 对象呢及Node.js环境的 `global` 对象。
 
 ```javascript
 const global = vm.getGlobal();
@@ -157,7 +157,7 @@ const global = vm.getGlobal();
 - VM.prototype.createUndefined()
   - `return` Value
 
-Create an `undefined` boxed type.
+创建 `undefined` 的包装类型。
 
 ```javascript
 const vUndefined = vm.createUndefined();
@@ -166,7 +166,7 @@ const vUndefined = vm.createUndefined();
 - VM.prototype.createNull()
   - `return:` Value
 
-Create an `null` boxed type.
+创建 `null` 的包装类型。
 
 ```javascript
 const vNull = vm.createNull();
@@ -176,7 +176,7 @@ const vNull = vm.createNull();
   - bool: Boolean
   - `return` Value
 
-Create an `bool` boxed type.
+创建 `bool` 的包装类型。
 
 ```javascript
 const vBoolean = vm.createBoolean(true);
@@ -186,7 +186,7 @@ const vBoolean = vm.createBoolean(true);
   - num: Number
   - `return` Value
 
-Create an `number` boxed type.
+创建 `number` 的包装类型。
 
 ```javascript
 const vNumber = vm.createNumber(1024);
@@ -196,7 +196,7 @@ const vNumber = vm.createNumber(1024);
   - str: String
   - `return` Value
 
-Create an `string` boxed type.
+创建 `string` 的包装类型。
 
 ```javascript
 const vString = vm.createString('Hello World!');
@@ -206,7 +206,7 @@ const vString = vm.createString('Hello World!');
 - VM.prototype.createObject()
   - `return` Value
 
-Create an `object` boxed type.
+创建 `object` 的包装类型。
 
 ```javascript
 const vObject = vm.createObject();
@@ -216,7 +216,7 @@ const vObject = vm.createObject();
   - length: Number | undefined
   - `return` Value
 
-Create an `array` boxed type.
+创建 `array` 的包装类型。
 
 ```javascript
 const vArray1 = vm.createArray();
@@ -229,7 +229,7 @@ const vArray2 = vm.createArray(128);
   - func: Function
   - `return` Value
 
-Create an `funcntion` boxed type. It receives a function name and the specific implementation of the function. Both the `function parameter` and `this` are boxed types in `func`.
+创建 `function` 的包装类型。其接收函数名 `name` 及具体函数实现 `func` 两个参数。但需要注意的是，其函数入参及 `this` 均为包装类型。
 
 ```javascript
 const vFuncntion = vm.createFunction("trim", function(str) {
@@ -242,7 +242,7 @@ const vFuncntion = vm.createFunction("trim", function(str) {
   - message: String | undefined
   - `return` Value
 
-Create an `error` boxed type.
+创建 `error` 的包装类型。
 
 ```javascript
 const vError1 = vm.createError();
@@ -255,7 +255,7 @@ const vError2 = vm.createError("unknown error");
   - flags: String | undefined
   - `return` Value
 
-Create an `regexp` boxed type.
+创建 `regexp` 的包装类型。
 
 ```javascript
 const vRegExp = vm.createRegExp("\\w+", "ig");
@@ -264,7 +264,7 @@ const vRegExp = vm.createRegExp("\\w+", "ig");
 - VM.prototype.createDate()
   - `return` Value
 
-Create an `date` boxed type.
+创建 `date` 的包装类型。
 
 ```javascript
 const vDate = vm.createDate();
@@ -274,7 +274,7 @@ const vDate = vm.createDate();
   - value: Value
   - `return` Boolean
 
-Used to determine if the type is `undefinend`.
+判断包装类型是否为 `undefined`。
 
 ```javascript
 const vUndefined = vm.createUndefined();
@@ -287,7 +287,7 @@ if(vm.isUndefined(vUndefined)) {
   - value: Value
   - `return` Boolean
 
-Used to determine if the type is `null`.
+判断包装类型是否为 `null`。
 
 ```javascript
 const vNull = vm.createNull();
@@ -300,7 +300,7 @@ if(vm.isNull(vNull)) {
   - value: Value
   - `return` Boolean
 
-Used to determine if the type is `bool`.
+判断包装类型是否为 `bool`。
 
 ```javascript
 const vBoolean = vm.createBoolean(true);
@@ -313,7 +313,7 @@ if(vm.isBoolean(vBoolean)) {
   - value: Value
   - `return` Boolean
 
-Used to determine if the type is `number`.
+判断包装类型是否为 `number`。
 
 ```javascript
 const vNumber = vm.createNumber(1024);
@@ -326,7 +326,7 @@ if(vm.isNumber(vNumber)) {
   - value: Value
   - `return` Boolean
 
-Used to determine if the type is `string`.
+判断包装类型是否为 `string`。
 
 ```javascript
 const vString = vm.createString("Hello World!");
@@ -339,7 +339,7 @@ if(vm.isString(vString)) {
   - value: Value
   - `return` Boolean
 
-Used to determine if the type is `object`.
+判断包装类型是否为 `object`。
 
 ```javascript
 const vObject = vm.createObject();
@@ -353,7 +353,7 @@ if(vm.isObject(vObject) && vm.isObject(vArray)) {
   - value: Value
   - `return` Boolean
 
-Used to determine if the type is `array`.
+判断包装类型是否为 `array`。
 
 ```javascript
 const vArray = vm.createArray();
@@ -366,7 +366,7 @@ if(vm.isArray(vArray)) {
   - value: Value
   - `return` Boolean
 
-Used to determine if the type is `function`.
+判断包装类型是否为 `function`。
 
 ```javascript
 const vFunction = vm.createFunction("log", function(){});
@@ -379,7 +379,7 @@ if(vm.isFunction(vFunction)){
   - value: Value
   - `return` Boolean
 
-Used to determine if the type is `error`.
+判断包装类型是否为 `error`。
 
 ```javascript
 const vError = vm.createError('unknown error');
@@ -392,7 +392,7 @@ if(vm.isError(vError)){
   - value: Value
   - `return` Boolean
 
-Used to determine if the type is `regexp`.
+判断包装类型是否为 `regexp`。
 
 ```javascript
 const vRegExp = vm.createRegExp("\\w+", "ig");
@@ -405,7 +405,7 @@ if(vm.isRegExp(vRegExp)){
   - value: Value
   - `return` Boolean
 
-Used to determine if the type is `date`.
+判断包装类型是否为 `date`。
 
 ```javascript
 const vDate = vm.createDate();
@@ -418,7 +418,7 @@ if(vm.isDate(vDate)){
 - value: Value
 - `return` undefined
 
-Converting `undefined` boxed type to `plain undefined` value.
+将 `undefined` 包装类型转换为普通的 `undefined` 值。
 
 ```javascript
 const vUndefined = vm.createUndefined();
@@ -429,7 +429,7 @@ vm.asUndefined(vUndefined) === undefined;
 - value: Value
 - `return` null
 
-Converting `null` boxed type to `plain null` value.
+将 `null` 包装类型转换为普通的 `null` 值。
 
 ```javascript
 const vNull = vm.createNull();
@@ -440,7 +440,7 @@ vm.asNull(vNull) === null;
   - value: Value
   - `return` Boolean
 
-Converting `bool` boxed type to `plain bool` value.
+将 `bool` 包装类型转换为普通的 `bool` 值。
 
 ```javascript
 const vBoolean = vm.createBoolean(true);
@@ -454,7 +454,7 @@ if(boolean === true) {
   - value: Value
   - `return` Number
 
-Converting `number` boxed type to `plain number` value.
+将 `number` 包装类型转换为普通的 `number` 值。
 
 ```javascript
 const vNumber = vm.createNumber(1024);
@@ -468,7 +468,7 @@ if(number === 1024) {
   - value: Value
   - `return` String
 
-Converting `string` boxed type to `plain string` value.
+将 `string` 包装类型转换为普通的 `string` 值。
 
 ```javascript
 const vString = vm.createString('Hello World!');
@@ -483,7 +483,7 @@ if(string === 'Hello World!') {
   - rval: Value
   - `return` Boolean
 
-Equivalent to the `instanceof` keyword.
+等价于 `instanceof` 关键字用法。
 
 ```javascript
 const global = vm.getGlobal();
@@ -498,7 +498,7 @@ if(vm.instanceof(vDate, vDateFunc)) {
   - value: Value
   - `return` String
 
-Equivalent to the `typeof` keyword.
+等价于 `typeof` 关键字用法。
 
 ```javascript
 const vString = vm.createString('Hello World!');
@@ -512,7 +512,7 @@ if(vm.typeof(vString) === "string") {
   - name: String
   - `return` Value
 
-Get the value of the property of the object. Return is a property boxed type.
+获取一个对象的对应属性，其返回值是一个包装类型。
 
 ```javascript
 const global = vm.getGlobal();
@@ -528,7 +528,7 @@ if(vm.isFunction(vPrint)) {
   - property: Value
   - `return` Value
 
-Assigning the property to object. Return is a property boxed type.
+设置一个对象的对应属性，其返回值是一个包装那类型。
 
 ```javascript
 const global = vm.getGlobal();
@@ -546,7 +546,7 @@ vm.setProperty(global, "console", console);
   - name: String
   - `return` Boolean
 
-Delete the property of object.
+删除对象的对应属性。
 
 ```javascript
 const global = vm.getGlobal();
@@ -564,7 +564,7 @@ if(vm.isUndefined(vPrint)) {
   - desc: Object
   - `return` Value
 
-Equivalent to the `Object.defineProperty` function.
+等价于 `Object.defineProperty` 函数的用法。
 
 ```javascript
 const vObject = vm.createObject();
@@ -592,7 +592,7 @@ vm.defineProperty(vObject, "age", {
   - value: Value
   - `return` Value
 
-Get the prototype of object.
+获取一个对象的原型。
 
 ```javascript
 const global = vm.getGlobal();
@@ -613,7 +613,7 @@ if(!vm.isUndefined(vStringFunc)) {
   - prototype: Value
   - `return` Value
 
-Set the prototype of object.
+设置一个对象的原型。
 
 ```javascript
 const vA = vm.createFunction("A", function() {});
@@ -627,7 +627,7 @@ vm.setPrototype(vA, vObject);
   - value: Value
   - `return` undefined
 
-Equivalent to the `throw` keyword.
+等价于 `throw` 关键字。
 
 ```javascript
 const vError = vm.createError('unknown error');
@@ -639,7 +639,7 @@ vm.throw(vError);
   - arg: Value
   - `return` Value
 
-Equivalent to the `new` keyword.
+等价于 `new` 关键字。
 
 ```javascript
 const vA = vm.createFunction('A', function(name) {
@@ -655,7 +655,7 @@ vm.new(vA, vm.createString("A"));
   - arg: Value
   - `return` Value
 
-Equivalent to the `Function.prototype.call` function.
+等价于 `Function.prototype.call` 函数。
 
 ```javascript
 const vLog = vm.createFunction('log', function() {
@@ -678,17 +678,17 @@ vm.call(
 - VM.prototype.destroy
   - `return` undefined
 
-Destroy VM instance.
+销毁VM实例，释放内存。
 
 ```javascript
 vm.destroy();
 ```
 
-### Benchmark
+### 性能测试
 
-sablejs may be the fastest interpreter written by JavaScript ([using v8 benchmark suites](https://github.com/mozilla/arewefastyet/tree/master/benchmarks/v8-v7)):
+sablejs也许是使用JavaScript编写的JavaScript引擎中最快的实现 ([测试用例使用 v8 benchmark suites](https://github.com/mozilla/arewefastyet/tree/master/benchmarks/v8-v7)):
 
-> Benchmark Enviorment:
+> 性能测试环境:
 >
 > - Node.js v12.19.0
 > - Golang 1.15.6
@@ -709,9 +709,9 @@ sablejs may be the fastest interpreter written by JavaScript ([using v8 benchmar
 | File Size(KB) | 220        | 152        | 134        | 434             | -      |
 | Gzip Size(KB) | 31         | 40         | 34         | 245             | -      |
 
-### Limits
+### 限制
 
-1. Dynamic execution of eval and Function is forbidden, but passing of literal string/number/null and undefined is allowed(the interpreter doesn't contain any compiler).
+1. eval及Function的动态执行部分在sablejs是被禁止的，但是如果你参数仅传递string/number/null及undefined的话，其是可以被正常执行的（因为解释器中不包含编译器，因此仅支持字面量的分析和传入）。
 
 ```javascript
 eval("print('Hello World!')"); // it's ok
@@ -728,7 +728,7 @@ Function("a", "b", str); // throw SyntaxError
 new Function("a", "b", str); // throw SyntaxError
 ```
 
-### License
+### 使用协议
 
 sablejs JavaScript Engine
 
