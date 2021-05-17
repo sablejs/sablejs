@@ -13,6 +13,12 @@
 
 sablejs covered ~95% [test262 es5-tests cases](https://github.com/tc39/test262/tree/es5-tests), it can be safely used in production.
 
+* [Quick Start](https://github.com/sablejs/sablejs#quick-start)
+* [APIs](https://github.com/sablejs/sablejs#apis)
+* [Benchmark](https://github.com/sablejs/sablejs#benchmark)
+* [Limits](https://github.com/sablejs/sablejs#limits)
+* [License](https://github.com/sablejs/sablejs#license)
+
 ### Quick Start
 
 **sablejs includes the Compiler and Interpreter independently**, so we removed the dynamic related api from the spec(see [Limits 1](https://github.com/sablejs/sablejs#limits)). In short, you need to compile your JavaScript code with sablejs cli before you run it.
@@ -60,7 +66,7 @@ Options:
 or you can import to your html directly
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/sablejs@0.35.1/runtime.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sablejs@0.35.2/runtime.js"></script>
 ```
 
 ##### Browser
@@ -73,7 +79,7 @@ const vm = new VM();
 const vGlobal = vm.getGlobal();
 const vConsole = vm.createObject();
 const vLog = vm.createFunction("log", function () {
-  var temp = [];
+  const temp = [];
   for (let i = 0; i < arguments.length; i++) {
     temp.push(vm.asString(arguments[i]));
   }
@@ -104,7 +110,7 @@ const vm = new VM();
 const vGlobal = vm.getGlobal();
 const vConsole = vm.createObject();
 const vLog = vm.createFunction("log", function () {
-  var temp = [];
+  const temp = [];
   for (let i = 0; i < arguments.length; i++) {
     temp.push(vm.asString(arguments[i]));
   }
