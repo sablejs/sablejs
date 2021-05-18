@@ -1,6 +1,5 @@
 
 ![LOGO](./logo.jpg)
-------------------
 
 ![linux ci](https://github.com/sablejs/sablejs/actions/workflows/linux.yml/badge.svg)
 ![osx ci](https://github.com/sablejs/sablejs/actions/workflows/osx.yml/badge.svg)
