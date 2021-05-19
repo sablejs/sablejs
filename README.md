@@ -10,9 +10,9 @@ English | [简体中文](./README-zh_CN.md)
 
 🏖️ The safer and faster ECMA5.1 interpreter written by JavaScript, it can be used:
 
-1. Sandbox(like Figma Plugin Sandbox, but better and easy to use);
+1. Sandbox (like Figma Plugin Sandbox, but better and easier to use);
 2. Mini Program/Game JavaScript dynamic execution;
-3. Protect JavaScript source code via AOT compiling to opcode;
+3. Protect JavaScript source code via AOT compiling to opcode.
 
 sablejs covered ~95% [test262 es5-tests cases](https://github.com/tc39/test262/tree/es5-tests), it can be safely used in production.
 
@@ -24,7 +24,7 @@ sablejs covered ~95% [test262 es5-tests cases](https://github.com/tc39/test262/t
 
 ### Quick Start
 
-**sablejs includes the Compiler and Interpreter independently**, so we removed the related dynamic api from the spec(see [Limits 1](https://github.com/sablejs/sablejs#limits)). In short, you need to compile your JavaScript code with sablejs cli before you run it.
+**sablejs includes the Compiler and Interpreter independently**, so we removed the related dynamic api from the spec (see [Limits 1](https://github.com/sablejs/sablejs#limits)). In short, you need to compile your JavaScript code with sablejs cli before you run it.
 
 #### Example
 
@@ -143,7 +143,7 @@ const VM = require('sablejs/runtime')();
 const vm = new VM();
 
 // source should be base64 string via sablejs compiling
-vm.run(`<compile source string>`);
+vm.run(`<compiled source string>`);
 ```
 
 - VM.prototype.getGlobal()
@@ -233,7 +233,7 @@ const vArray2 = vm.createArray(128);
 Create an `funcntion` boxed type. It receives a function name and the specific implementation of the function. Both the `function parameter` and `this` are boxed types in `func`.
 
 ```javascript
-const vFuncntion = vm.createFunction("trim", function(str) {
+const vFunction = vm.createFunction("trim", function(str) {
   // this is the undefined or new's instannce boxed type
   // str maybe the string boxed type, we need to check it
 });
@@ -416,8 +416,8 @@ if(vm.isDate(vDate)){
 ```
 
 - VM.prototype.asUndefined(value)
-- value: Value
-- `return` undefined
+  - value: Value
+  - `return` undefined
 
 Converting `undefined` boxed type to `plain undefined` value.
 
@@ -427,8 +427,8 @@ vm.asUndefined(vUndefined) === undefined;
 ```
 
 - VM.prototype.asNull(value)
-- value: Value
-- `return` null
+  - value: Value
+  - `return` null
 
 Converting `null` boxed type to `plain null` value.
 
@@ -693,7 +693,7 @@ vm.call(
 - VM.prototype.destroy
   - `return` undefined
 
-Destroy VM instance.
+Destroy the VM instance.
 
 ```javascript
 vm.destroy();
@@ -701,7 +701,7 @@ vm.destroy();
 
 ### Benchmark
 
-sablejs may be the fastest interpreter written by JavaScript ([using v8 benchmark suites](https://github.com/mozilla/arewefastyet/tree/master/benchmarks/v8-v7)):
+sablejs may be the fastest interpreter written in JavaScript ([using v8 benchmark suites](https://github.com/mozilla/arewefastyet/tree/master/benchmarks/v8-v7)):
 
 > Benchmark Enviorment:
 >
@@ -726,7 +726,7 @@ sablejs may be the fastest interpreter written by JavaScript ([using v8 benchmar
 
 ### Limits
 
-1. Dynamic execution of eval and Function is forbidden, but passing of literal string/number/null and undefined is allowed(the interpreter doesn't contain any compiler).
+1. Dynamic execution by `eval` and `Function` is forbidden, but passing literal string/number/null and undefined is allowed (the interpreter doesn't contain any compiler).
 
 ```javascript
 eval("print('Hello World!')"); // it's ok
