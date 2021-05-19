@@ -587,7 +587,7 @@ vm.defineProperty(vObject, "name", {
   value: vm.createString("sablejs"),
 });
 
-const getter = vm.createFunction("getter", functionn() {
+const getter = vm.createFunction("getter", function() {
   return vm.createNumber("101");
 });
 
