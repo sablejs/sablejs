@@ -20,6 +20,7 @@ sablejs covered ~95% [test262 es5-tests cases](https://github.com/tc39/test262/t
 * [APIs](https://github.com/sablejs/sablejs#apis)
 * [Benchmark](https://github.com/sablejs/sablejs#benchmark)
 * [Limits](https://github.com/sablejs/sablejs#limits)
+* [Bindings](https://github.com/sablejs/sablejs#bindings)
 * [License](https://github.com/sablejs/sablejs#license)
 
 ### Quick Start
@@ -744,6 +745,11 @@ new Function("a", "b", str); // throw SyntaxError
 ```
 
 2. The browser environment relies on native browser functions such as `btoa` / `unescape` / `decodeURIComponent`, etc. if you need support for IE9 or below, you need to add shims.
+
+
+### Bindings
+* [cax2sablejs](https://github.com/sablejs/cax4sablejs) - Canvas2D rendering engine for sablejs
+* [ajax2sablejs](https://github.com/sablejs/ajax4sablejs) - A tiny and simple ajax for sablejs
 
 ### License
 
