@@ -68,7 +68,7 @@ Options:
 你也可以直接通过script标签进行运行时的引入：
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/sablejs@1.0.2/runtime.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sablejs@1.0.3/runtime.js"></script>
 ```
 
 ##### 浏览器环境
