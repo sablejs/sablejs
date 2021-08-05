@@ -369,6 +369,7 @@ function runVMTest(path) {
       ${helper};
       ${data};
     `);
+    console.log(codestr);
     vm.run(codestr, true);
     vm.destroy();
     console.log(chalk.green(`[RUNTIME]: ` + path));
