@@ -57,7 +57,8 @@ Options:
   -v, --vers           output the current version
   -i, --input <path>   compile input filepath
   -o, --output <path>  compile output filepath
-  -s, --slient         dont output log
+  -j  --json           don't do Base64 compress, output simple json result
+  -s, --slient         don't output log
   -h, --help
 ```
 
@@ -70,7 +71,7 @@ Options:
 or you can import to your html directly
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/sablejs@1.0.3/runtime.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sablejs@1.0.4/runtime.js"></script>
 ```
 
 ##### Browser

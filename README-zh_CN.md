@@ -55,6 +55,7 @@ Options:
   -v, --vers           输出当前版本号
   -i, --input <path>   指定编译的文件路径
   -o, --output <path>  指定输出的文件路径
+  -j, --json           直接输出JSON产物，不进行Base64编码
   -s, --slient         静默模式，不输出日志
   -h, --help
 ```

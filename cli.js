@@ -19,6 +19,7 @@ program
   .version(VERSION, "-v, --vers", "output the current version")
   .option("-i, --input <path>", "compile input filepath")
   .option("-o, --output <path>", "compile output filepath")
+  .option("-j  --json", "don't do base64 compress, output simple json result")
   .option("-s, --slient", "don't output log")
   .parse(process.argv);
 
@@ -91,7 +92,7 @@ opath = path.resolve(opath);
     }
   }
 
-  let { error, output } = spawn.sync(binpath, ["-i", ipath, "-o", opath]);
+  let { error, output } = spawn.sync(binpath, [opts.json ? "-s" : "", "-i", ipath, "-o", opath]);
   if (error) {
     log(chalk.red(error));
     process.exit(1);
