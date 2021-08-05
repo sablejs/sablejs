@@ -330,7 +330,10 @@ function compile(codestr) {
   const opath = `${os.tmpdir()}/sablejs.o.test.js`;
   fs.writeFileSync(ipath, codestr);
   fs.writeFileSync(opath, "");
-  let { error, output } = spawn.sync("node", [__dirname + "/../cli.js", "--json", "-i", ipath, "-o", opath]);
+  console.log(!!codestr);
+  console.log(fs.readFileSync(ipath, "utf8").toString());
+  console.log([__dirname + "/../cli.js", "-j", "-i", ipath, "-o", opath]);
+  let { error, output } = spawn.sync("node", [__dirname + "/../cli.js", "-j", "-i", ipath, "-o", opath]);
   if (error) {
     console.log(chalk.red(error));
     process.exit(1);
@@ -369,7 +372,6 @@ function runVMTest(path) {
       ${helper};
       ${data};
     `);
-    console.log(">>>>>>>>>>>>", codestr);
     vm.run(codestr, true);
     vm.destroy();
     console.log(chalk.green(`[RUNTIME]: ` + path));
