@@ -330,8 +330,6 @@ function compile(codestr) {
   const opath = `${os.tmpdir()}/sablejs.o.test.js`;
   fs.writeFileSync(ipath, codestr);
   fs.writeFileSync(opath, "");
-  console.log(!!codestr);
-  console.log(fs.readFileSync(ipath, "utf8").toString());
   console.log([__dirname + "/../cli.js", "-j", "-i", ipath, "-o", opath]);
   let { error, output } = spawn.sync("node", [__dirname + "/../cli.js", "-j", "-i", ipath, "-o", opath]);
   if (error) {
@@ -341,6 +339,7 @@ function compile(codestr) {
 
   output = Buffer.concat(output.filter((v) => !!v));
   output = output.toString().trim();
+  console.log(output,fs.readFileSync(opath, "utf8").toString());
   if (/^\[ERROR\]/.test(output)) {
     throw output;
   } else {
