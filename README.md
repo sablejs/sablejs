@@ -6,9 +6,9 @@
 ![windows ci](https://github.com/sablejs/sablejs/actions/workflows/win.yml/badge.svg)
 <a href="https://www.npmjs.com/package/sablejs"><img src="https://img.shields.io/npm/v/sablejs.svg?sanitize=true" alt="Version"></a>
 
-> YoTest Captcha is strongly driven by sablejs, [click to learn more](http://fastyotest.com/)
-
 English | [简体中文](./README-zh_CN.md)
+
+> YoTest Captcha is strongly driven by sablejs, [click to learn more](http://fastyotest.com/)
 
 🏖️ The safer and faster ECMA5.1 interpreter written by JavaScript, it can be used:
 
