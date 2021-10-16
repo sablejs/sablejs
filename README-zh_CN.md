@@ -5,7 +5,7 @@
 ![windows ci](https://github.com/sablejs/sablejs/actions/workflows/win.yml/badge.svg)
 <a href="https://www.npmjs.com/package/sablejs"><img src="https://img.shields.io/npm/v/sablejs.svg?sanitize=true" alt="Version"></a>
 
-> 友验智能验证码由 sablejs 强力驱动, 点击了解更多(http://fastyotest.com/)
+> 友验智能验证码由 sablejs 强力驱动, [点击了解更多](http://fastyotest.com/)
 
 [English](./README.md) | 简体中文
 
