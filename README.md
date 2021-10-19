@@ -136,8 +136,9 @@ vm.destroy();
 
 ### APIs
 
-- VM.prototype.run(source)
-  - source: String
+- VM.prototype.run(source, isSimpleJSON)
+  - source: String - the compiled result via sablejs compiler
+  - isSimpleJSON: Boolean - if be true, you should use `-j` to make compiler output simple json result, default false.
   - `return:` undefined
   
 Initialize the VM and execute the compiled source code.

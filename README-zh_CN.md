@@ -134,8 +134,9 @@ vm.destroy();
 
 ### APIs
 
-- VM.prototype.run(source)
-  - source: String
+- VM.prototype.run(source, isSimpleJSON)
+  - source: String - 通过sablejs编译器编译出的产物
+  - isSimpleJSON: Boolean - 如果设置为true，那么对应的编译产物应该是sablejs -j产生的JSON数据（而不是base64字符串），默认为false
   - `return:` undefined
 
 初始化VM并执行编译的代码。  
