@@ -6,11 +6,11 @@
 ![windows ci](https://github.com/sablejs/sablejs/actions/workflows/win.yml/badge.svg)
 <a href="https://www.npmjs.com/package/sablejs"><img src="https://img.shields.io/npm/v/sablejs.svg?sanitize=true" alt="Version"></a>
 
+> 🎉 sablejs 2.0 will be opening all the code, please [click to learn more](https://github.com/sablejs/sablejs/issues/19) about our milestone goals.
+
 English | [简体中文](./README-zh_CN.md)
 
-> YoTest Captcha is strongly driven by sablejs, [click to learn more](http://fastyotest.com/)
-
-🏖️ The safer and faster ECMA5.1 interpreter written by JavaScript, it can be used:
+The safer and faster ECMA5.1 interpreter written by JavaScript, it can be used:
 
 1. Sandbox (like Figma Plugin Sandbox, but better and easier to use);
 2. Mini Program/Game JavaScript dynamic execution;
@@ -73,7 +73,7 @@ Options:
 or you can import to your html directly
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/sablejs@1.0.5/runtime.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sablejs@1.0.6/runtime.js"></script>
 ```
 
 ##### Browser

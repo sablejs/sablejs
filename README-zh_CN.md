@@ -5,11 +5,11 @@
 ![windows ci](https://github.com/sablejs/sablejs/actions/workflows/win.yml/badge.svg)
 <a href="https://www.npmjs.com/package/sablejs"><img src="https://img.shields.io/npm/v/sablejs.svg?sanitize=true" alt="Version"></a>
 
+> 🎉 sablejs 2.0 计划开源所有代码，请[点击此处](https://github.com/sablejs/sablejs/issues/19)了解我们的规划.
+
 [English](./README.md) | 简体中文
 
-> 友验智能验证码由 sablejs 强力驱动，[点击了解更多](http://fastyotest.com/)
-
-🏖️ 使用JavaScript编写的更快更安全的JavaScript解释器，其可以用来：
+使用JavaScript编写的更快更安全的JavaScript解释器，其可以用来：
 
 1. 执行沙盒(类似于Figma的插件沙盒，但是更易于使用)；
 2. 小游戏/小程序的动态执行；
@@ -71,7 +71,7 @@ Options:
 你也可以直接通过script标签进行运行时的引入：
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/sablejs@1.0.5/runtime.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sablejs@1.0.6/runtime.js"></script>
 ```
 
 ##### 浏览器环境
