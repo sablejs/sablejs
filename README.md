@@ -6,7 +6,7 @@
 ![windows ci](https://github.com/sablejs/sablejs/actions/workflows/win.yml/badge.svg)
 <a href="https://www.npmjs.com/package/sablejs"><img src="https://img.shields.io/npm/v/sablejs.svg?sanitize=true" alt="Version"></a>
 
-> 🎉 sablejs 2.0 will be opening all the code, please [click to learn more](https://github.com/sablejs/sablejs/issues/19) about our milestone goals.
+> 🎉 sablejs 2.0 will be opening all the code, please [click to learn more](https://github.com/sablejs/sablejs/issues/19) about our milestone and goals.
 
 English | [简体中文](./README-zh_CN.md)
 
