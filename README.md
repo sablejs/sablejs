@@ -73,7 +73,7 @@ Options:
 or you can import to your html directly
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/sablejs@1.0.6/runtime.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sablejs@1.0.7/runtime.js"></script>
 ```
 
 ##### Browser

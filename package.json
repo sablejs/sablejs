@@ -1,6 +1,6 @@
 {
   "name": "sablejs",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "🏖️ The safer and faster ECMA5.1 interpreter written by JavaScript.",
   "repository": {
     "type": "git",

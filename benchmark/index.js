@@ -10,7 +10,7 @@ function compile(codestr) {
   const opath = `${os.tmpdir()}/sablejs.o.test.js`;
   fs.writeFileSync(ipath, codestr);
   fs.writeFileSync(opath, "");
-  let { error, output } = spawn.sync("node", [__dirname + "/../cli.js", "--json", "-i", ipath, "-o", opath]);
+  let { error, output } = spawn.sync("node", [__dirname + "/../cli.js", "-j", "-i", ipath, "-o", opath]);
   if (error) {
     console.log(chalk.red(error));
     process.exit(1);
