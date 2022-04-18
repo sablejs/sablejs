@@ -54,7 +54,7 @@ opath = path.resolve(opath);
     process.exit(1);
   }
 
-  const filename = `sablejs-${platform}-${ARCH}`;
+  let filename = `sablejs-${platform}-${ARCH}`;
   let binpath = `${pkgpath}/${filename}`;
   binpath = platform === "win" ? `${binpath}.exe` : binpath;
   if (!fs.existsSync(binpath)) {
@@ -70,11 +70,12 @@ opath = path.resolve(opath);
       percent: true,
     });
 
+    filename = platform === "win" ? `${filename}.exe` : filename;
     const downloader = new Downloader({
       url: `${DOWNLOAD_PREFIX_URL}${filename}`,
       directory: pkgpath,
       maxAttempts: 3,
-      fileName: platform === "win" ? `${filename}.exe` : filename,
+      fileName: filename,
       onProgress: (percentage) => {
         progressBar.update(percentage / 100);
         if (percentage >= 100) {
