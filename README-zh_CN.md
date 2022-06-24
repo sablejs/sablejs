@@ -12,8 +12,7 @@
 使用JavaScript编写的更快更安全的JavaScript解释器，其可以用来：
 
 1. 执行沙盒(类似于Figma的插件沙盒，但是更易于使用)；
-2. 小游戏/小程序的动态执行；
-3. 通过将JavaScript编译为opcode进行代码保护；
+2. 通过将JavaScript编译为opcode进行代码保护；
 
 sablejs已经覆盖了约95%的 [test262 es5-tests cases](https://github.com/tc39/test262/tree/es5-tests)，其可以很安全可靠的用于你的生产之中。
 
