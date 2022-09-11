@@ -71,7 +71,8 @@ opath = path.resolve(opath);
     });
 
     filename = platform === "win" ? `${filename}.exe` : filename;
-    const downloader = new Downloader({
+    const proxy = process.env.all_proxy || process.env.https_proxy || process.env.http_proxy;
+    const downloader = new Downloader(Object.assign(proxy ? { proxy } : {}, {
       url: `${DOWNLOAD_PREFIX_URL}${filename}`,
       directory: pkgpath,
       maxAttempts: 3,
@@ -82,7 +83,7 @@ opath = path.resolve(opath);
           terminal("\n");
         }
       },
-    });
+    }));
 
     try {
       await downloader.download();
