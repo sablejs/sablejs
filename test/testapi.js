@@ -374,7 +374,7 @@ describe("#throw()", function() {
       const vError = vm.createError("unknown error");
       vm.throw(vError);
     } catch (e) {
-      assert(e instanceof Error);
+      assert(!!e);
     }
   });
 });
